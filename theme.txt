@@ -30,7 +30,7 @@ terminal-font: "Unknown Regular 16"
 
 + label {	
 	left = 6
-	top = 100%-40
+	top = 100%-61
 	height = 54
 	width = 200
 
@@ -41,7 +41,7 @@ terminal-font: "Unknown Regular 16"
 
 + label {	
 	left = 6
-	top = 100%-10
+	top = 100%-31
 	height = 54
 	width = 200
 
@@ -55,7 +55,7 @@ terminal-font: "Unknown Regular 16"
 	id = "__timeout__"
 	
 	left = 50%
-	top = 100%-30
+	top = 100%-31
 	height = 24
 	width = 50%-6	
 	
