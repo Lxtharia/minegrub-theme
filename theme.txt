@@ -6,11 +6,9 @@ terminal_font: "Unknown Regular 16"
 
 + boot_menu {
 	left: 50% - 300
-	top: 50% - 85
+	top: 40%
 	width: 600
 	height: 500
-	
-
 
 	item_font: "Minecraft 30"
 	item_color: #ffffff
@@ -22,14 +20,35 @@ terminal_font: "Unknown Regular 16"
 	scrollbar: "false"
 }
 
-+ label {
++ image {
+	# width of image is 744
+	left: 50%-372
+	# end of the menu items is 40% + (12+60)*n + 32
+	top: 40%+320
+	file: "static_bar.png"
+}
+
++ label {	
+	left: 6
+	top: 100%-60
+	height: 54
+	width: 200
+
 	text = "Minegrub 1.0.0\n127 Packages Installed"
-	
+	align: "left"
+	font: "Minecraft 30"
 }
 
 
 + label {
 	id: "__timeout__"
+	
+	left: 50%
+	top: 100%-30
+	height: 24
+	width: 50%-6	
+	
 	text: "The highlighted entry will be executed in %d sec"
 	align: "right"
+	font: "Minecraft 30"
 }
