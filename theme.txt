@@ -1,54 +1,54 @@
 # Global
 
-title_text: ""
-desktop_image: "background.png"
-terminal_font: "Unknown Regular 16"
+title-text: ""
+desktop-image: "background.png"
+terminal-font: "Unknown Regular 16"
 
 + boot_menu {
-	left: 50% - 300
-	top: 40%
-	width: 600
-	height: 500
+	left = 50% - 300
+	top = 40%
+	width = 600
+	height = 500
 
-	item_font: "Minecraft 30"
-	item_color: #ffffff
-	item_height: 60
-	item_padding: 0
-	item_spacing: 12
-	item_pixmap_style: "item_*.png"
-	selected_item_pixmap_style: "selected_item_*.png"
-	scrollbar: "false"
+	item_font = "Minecraft 30"
+	item_color = #ffffff
+	item_height = 60
+	item_padding = 0
+	item_spacing = 12
+	item_pixmap_style = "item_*.png"
+	selected_item_pixmap_style = "selected_item_*.png"
+	scrollbar = "false"
 }
 
 + image {
 	# width of image is 744
-	left: 50%-372
+	left = 50%-372
 	# end of the menu items is 40% + (12+60)*n + 32
-	top: 40%+320
-	file: "static_bar.png"
+	top = 40%+320
+	file = "static_bar.png"
 }
 
 + label {	
-	left: 6
-	top: 100%-60
-	height: 54
-	width: 200
+	left = 6
+	top = 100%-60
+	height = 54
+	width = 200
 
 	text = "Minegrub 1.0.0\n127 Packages Installed"
-	align: "left"
-	font: "Minecraft 30"
+	align = "left"
+	font = "Minecraft 30"
 }
 
 
 + label {
-	id: "__timeout__"
+	id = "__timeout__"
 	
-	left: 50%
-	top: 100%-30
-	height: 24
-	width: 50%-6	
+	left = 50%
+	top = 100%-30
+	height = 24
+	width = 50%-6	
 	
-	text: "The highlighted entry will be executed in %d sec"
-	align: "right"
-	font: "Minecraft 30"
+	text = "The highlighted entry will be executed in %d sec"
+	align = "right"
+	font = "Minecraft 30"
 }
