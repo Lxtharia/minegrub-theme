@@ -12,9 +12,9 @@ terminal-font: "Unknown Regular 16"
 
 	item_font = "Minecraft Regular 30"
 	item_color = "#fff"
-	item_height = 60
+	item_height = 45
 	item_padding = 0
-	item_spacing = 12
+	item_spacing = 27
 	item_pixmap_style = "item_*.png"
 	selected_item_pixmap_style = "selected_item_*.png"
 	scrollbar = false
@@ -23,20 +23,31 @@ terminal-font: "Unknown Regular 16"
 + image {
 	# width of image is 744
 	left = 50%-372
-	# end of the menu items is 40% + (12+60)*n + 32
+	# end of the menu items is 40% + (12+60)*n + 32 - 6
 	top = 40%+320
 	file = "static_bar.png"
 }
 
 + label {	
 	left = 6
-	top = 100%-60
+	top = 100%-40
 	height = 54
 	width = 200
 
-	text = "Minegrub 1.0.0\n127 Packages Installed"
-	align = "left"
+	text = "Minegrub 1.0.0"
 	font = "Minecraft Regular 30"
+	color = "white"
+}
+
++ label {	
+	left = 6
+	top = 100%-10
+	height = 54
+	width = 200
+
+	text = "127 Packages Installed"
+	font = "Minecraft Regular 30"
+	color = "white"
 }
 
 
@@ -51,4 +62,5 @@ terminal-font: "Unknown Regular 16"
 	text = "The highlighted entry will be executed in %d sec"
 	align = "right"
 	font = "Minecraft Regular 30"
+	color = "white"
 }
