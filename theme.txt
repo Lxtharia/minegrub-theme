@@ -5,19 +5,19 @@ desktop-image: "background.png"
 terminal-font: "Unknown Regular 16"
 
 + boot_menu {
-	left = 50% - 300
+	left = 50%-300
 	top = 40%
 	width = 600
 	height = 500
 
-	item_font = "Minecraft 30"
-	item_color = #ffffff
+	item_font = "Minecraft Regular 30"
+	item_color = "#fff"
 	item_height = 60
 	item_padding = 0
 	item_spacing = 12
 	item_pixmap_style = "item_*.png"
 	selected_item_pixmap_style = "selected_item_*.png"
-	scrollbar = "false"
+	scrollbar = false
 }
 
 + image {
@@ -36,7 +36,7 @@ terminal-font: "Unknown Regular 16"
 
 	text = "Minegrub 1.0.0\n127 Packages Installed"
 	align = "left"
-	font = "Minecraft 30"
+	font = "Minecraft Regular 30"
 }
 
 
@@ -50,5 +50,5 @@ terminal-font: "Unknown Regular 16"
 	
 	text = "The highlighted entry will be executed in %d sec"
 	align = "right"
-	font = "Minecraft 30"
+	font = "Minecraft Regular 30"
 }
