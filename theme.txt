@@ -21,10 +21,12 @@ terminal-font: "Unknown Regular 16"
 }
 
 + image {
-	# width of image is 744
+	# width of the static bar image is 744
 	left = 50%-372
-	# end of the menu items is 40% + (12+60)*n + 32 - 6
-	top = 40%+320
+	# CHANGE VALUE HERE (if you like)
+	# top value formula: n is amount of boot options (each element is (45 height + 27 spacing) = 72px 
+	# 40% + 72*n + 26
+	top = 40%+314
 	file = "static_bar.png"
 }
 
@@ -45,7 +47,7 @@ terminal-font: "Unknown Regular 16"
 	height = 54
 	width = 200
 
-	text = "127 Packages Installed"
+	text = "647 Packages Installed"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
