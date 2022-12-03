@@ -12,9 +12,9 @@ terminal-font: "Unknown Regular 16"
 
 	item_font = "Minecraft Regular 30"
 	item_color = "#fff"
-	item_height = 45
+	item_height = 42
 	item_padding = 0
-	item_spacing = 27
+	item_spacing = 30
 	item_pixmap_style = "item_*.png"
 	selected_item_pixmap_style = "selected_item_*.png"
 	scrollbar = false
@@ -24,7 +24,7 @@ terminal-font: "Unknown Regular 16"
 	# width of the static bar image is 744
 	left = 50%-372
 	# CHANGE VALUE HERE (if you like)
-	# top value formula: n is amount of boot options (each element is (45 height + 27 spacing) = 72px 
+	# top value formula: n is amount of boot options (each element is (42 height + 30 spacing) = 72px 
 	# 40% + 72*n + 26
 	top = 40%+314
 	file = "static_bar.png"
