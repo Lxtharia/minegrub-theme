@@ -1,6 +1,7 @@
 # minegrub-theme
 A Grub Theme in the style of Minecraft!
 
+
 ![Minegrub Preview "Screenshot"](preview_minegrub.png)
 
 ### How do i install it??
@@ -22,6 +23,10 @@ GRUB_THEME=/boot/grub/themes/minegrub-theme/theme.txt
 - im no linux expert, thats why i explain it so thoroughly, for other newbies :>
 - i use arch btw
 - i hope u like it, cause i sure do lmao
+
+#### Thanks to
+- https://github.com/toboot for giving me this wonderful idea!
+- the internet for giving me wisdom lmao
 
 
 Font downloaded from https://www.fontspace.com/minecraft-font-f28180 and used for non commercial use.
