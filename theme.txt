@@ -20,6 +20,7 @@ terminal-font: "Unknown Regular 16"
 	scrollbar = false
 }
 
+
 + image {
 	# width of the static bar image is 744
 	left = 50%-372
@@ -28,6 +29,13 @@ terminal-font: "Unknown Regular 16"
 	# 40% + 72*n + 26
 	top = 40%+314
 	file = "static_bar.png"
+}
+
++ image {
+	# width of the logo image is 1200, but the center of the logo is at x=400
+	left = 50% - 400
+	top = 0
+	file = "logo.png"	
 }
 
 + label {	
@@ -51,7 +59,6 @@ terminal-font: "Unknown Regular 16"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
-
 
 + label {
 	id = "__timeout__"
