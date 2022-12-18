@@ -9,14 +9,14 @@ if [[ -f "birthday" ]]; then
 	if [[ $(date +%d%m) -eq 2812 ]]; then
 		echo Happy Birthday Linus! Placing birthday background in location.
 		mv ../background.png ./background.png
-		mv ./birthday ../background.png
+		mv ./birthday.png ../background.png
 		exit
 	fi
 else
 # If file isn't present, check it isn't still Linus' birthday. If it isn't, put the files back as they're meant to be and continue the script as normal.
 	if [[ $(date +%d%m) -ne 2812 ]]; then
 		echo Party time is over, restoring old background.
-		mv ../background.png ./birthday
+		mv ../background.png ./birthday.png
 		mv ./background.png ../background.png
 	else
 		exit
