@@ -71,7 +71,7 @@ terminal-font: "Unknown Regular 16"
 	height = 24
 	width = 50%-6	
 	
-	text = "The highlighted entry will be executed in %d sec"
+	text = "Joining world in %d seconds"
 	align = "right"
 	font = "Minecraft Regular 30"
 	color = "white"
