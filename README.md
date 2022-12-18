@@ -2,7 +2,7 @@
 A Grub Theme in the style of Minecraft!
 
 
-![Minegrub Preview "Screenshot"](preview_minegrub.png)
+![Minegrub Preview "Screenshot"](resources/preview_minegrub.png)
 
 ### How do i install it??
 - `cd /boot/grub2/themes/` and do `git clone https://github.com/Lxtharia/minegrub-theme.git` 
