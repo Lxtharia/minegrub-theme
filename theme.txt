@@ -11,10 +11,10 @@ terminal-font: "Unknown Regular 16"
 	height = 500
 
 	item_font = "Minecraft Regular 30"
-	item_color = "#fff"
-	item_height = 42
+	item_color = "#3f3f3f"
+	item_height = 34
 	item_padding = 0
-	item_spacing = 30
+	item_spacing = 38
 	item_pixmap_style = "item_*.png"
 	selected_item_pixmap_style = "selected_item_*.png"
 	scrollbar = false
