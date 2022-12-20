@@ -4,6 +4,26 @@ title-text: ""
 desktop-image: "background.png"
 terminal-font: "Unknown Regular 16"
 
+# Text White 
++ boot_menu {
+	# as we don't have any pixmaps here, it gets aligned strangely
+	# top pixmap is 17px in height 
+	# left pixmap is 6px in width 
+	# the text needs to be 3 pixels above and 3 pixels to the left
+	left = 50%-297 
+	top = 40%+14
+	width = 600
+	height = 500
+
+	item_font = "Minecraft Regular 30"
+	item_color = "#ffffff"
+	item_height = 34
+	item_padding = 0
+	item_spacing = 38
+	scrollbar = false
+}
+
+
 + boot_menu {
 	left = 50%-300
 	top = 40%
@@ -11,7 +31,7 @@ terminal-font: "Unknown Regular 16"
 	height = 500
 
 	item_font = "Minecraft Regular 30"
-	item_color = "#3f3f3f"
+	item_color = "#383838"
 	item_height = 34
 	item_padding = 0
 	item_spacing = 38
@@ -19,6 +39,7 @@ terminal-font: "Unknown Regular 16"
 	selected_item_pixmap_style = "selected_item_*.png"
 	scrollbar = false
 }
+
 
 
 + image {
