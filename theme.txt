@@ -4,6 +4,26 @@ title-text: ""
 desktop-image: "background.png"
 terminal-font: "Unknown Regular 16"
 
+# Text White 
++ boot_menu {
+	# as we don't have any pixmaps here, it gets aligned strangely
+	# top pixmap is 17px in height 
+	# left pixmap is 6px in width 
+	# the text needs to be 3 pixels above and 3 pixels to the left
+	left = 50%-297 
+	top = 40%+14
+	width = 600
+	height = 500
+
+	item_font = "Minecraft Regular 30"
+	item_color = "#ffffff"
+	item_height = 34
+	item_padding = 0
+	item_spacing = 38
+	scrollbar = false
+}
+
+
 + boot_menu {
 	left = 50%-300
 	top = 40%
@@ -11,14 +31,15 @@ terminal-font: "Unknown Regular 16"
 	height = 500
 
 	item_font = "Minecraft Regular 30"
-	item_color = "#fff"
-	item_height = 42
+	item_color = "#383838"
+	item_height = 34
 	item_padding = 0
-	item_spacing = 30
+	item_spacing = 38
 	item_pixmap_style = "item_*.png"
 	selected_item_pixmap_style = "selected_item_*.png"
 	scrollbar = false
 }
+
 
 
 + image {
@@ -41,6 +62,7 @@ terminal-font: "Unknown Regular 16"
 	file = "logo.png"	
 }
 
+# TEXT 
 + label {	
 	left = 6
 	top = 100%-61
@@ -52,6 +74,19 @@ terminal-font: "Unknown Regular 16"
 	color = "white"
 }
 
+# SHADOW 
++ label {
+	left = 9
+	top = 100%-58
+	height = 54
+	width = 200
+
+	text = "Minegrub 1.0.0"
+	font = "Minecraft Regular 30"
+	color = "#3f3f3f"
+}
+
+# TEXT
 + label {	
 	left = 6
 	top = 100%-31
@@ -63,6 +98,19 @@ terminal-font: "Unknown Regular 16"
 	color = "white"
 }
 
+# SHADOW
++ label {
+	left = 9
+	top = 100%-28
+	height = 54
+	width = 200
+
+	text = "647 Packages Installed"
+	font = "Minecraft Regular 30"
+	color = "#3f3f3f"
+}
+
+# TEXT 
 + label {
 	id = "__timeout__"
 	
@@ -76,3 +124,20 @@ terminal-font: "Unknown Regular 16"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
+
+# SHADOW 
++ label {
+	id = "__timeout__"
+
+	left = 50%+3
+	top = 100%-28
+	height = 24
+	width = 50%-6
+
+	text = "Joining world in %d seconds"
+	align = "right"
+	font = "Minecraft Regular 30"
+	color = "#3f3f3f"
+}
+
+
