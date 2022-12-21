@@ -5,7 +5,7 @@ count=0
 
 # Linus' Birthday logic
 # If birthday file is present, check the date, and use it as the logo if it's Linus's birthday. End the script early.
-if [[ -f "birthday" ]]; then
+if [[ -f "birthday.png" ]]; then
 	if [[ $(date +%d%m) -eq 2812 ]]; then
 		echo Happy Birthday Linus! Placing birthday logo in location.
 		mv ../logo.png ./logo.png
