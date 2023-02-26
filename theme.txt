@@ -17,6 +17,7 @@ terminal-font: "Unknown Regular 16"
 
 	item_font = "Minecraft Regular 30"
 	item_color = "#ffffff"
+	selected_item_color = "#ffffa0"
 	item_height = 34
 	item_padding = 0
 	item_spacing = 38
@@ -32,6 +33,7 @@ terminal-font: "Unknown Regular 16"
 
 	item_font = "Minecraft Regular 30"
 	item_color = "#383838"
+	selected_item_color = "#3f3f28"
 	item_height = 34
 	item_padding = 0
 	item_spacing = 38
@@ -49,7 +51,7 @@ terminal-font: "Unknown Regular 16"
 	# n is amount of boot options (each element is (42 height + 30 spacing) = 72px in height) 
 	# top = 40%+( 72 * N + 26 )
 	############### CHANGE VALUE HERE ################
-	top = 40%+314
+	top = 40%+242
 	##################################################
 
 	file = "static_bar.png"
