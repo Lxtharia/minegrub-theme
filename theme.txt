@@ -58,8 +58,15 @@ terminal-font: "Monocraft Regular 22"
 
 	# n is amount of boot options (each element is (42 height + 30 spacing) = 72px in height) 
 	# top = 40%+( 72 * N + 26 )
+	#
+	### + 170 (for 2 boot options)
+	### + 242 (for 3 boot options)
+	### + 314 (for 4 boot options)
+	### + 386 (for 5 boot options)
+	### + 458 (for 6 boot options)
+	### + 530 (for 7 boot options)
 	############### CHANGE VALUE HERE ################
-	top = 40%+242
+	top = 40%+314
 	##################################################
 
 	file = "static_bar.png"
