@@ -2,7 +2,15 @@
 
 title-text: ""
 desktop-image: "background.png"
-terminal-font: "Unknown Regular 16"
+
+# Terminal for Console and Options
+terminal-border: "20"
+terminal-left: "10%"
+terminal-top: "10%+23"
+terminal-width: "80%"
+terminal-height: "80%"
+terminal-box: "term_*.png"
+terminal-font: "Monocraft Regular 22"
 
 # Text White 
 + boot_menu {
