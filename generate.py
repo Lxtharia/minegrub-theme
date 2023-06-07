@@ -56,6 +56,7 @@ def generate():
     use_logo(index)
 
 def use_logo(index: int):
+    print(f"Using splash #{index}: '{text_options[index]}'.")
     shutil.copyfile(f"{cachedir}/{index}.png", f"{repodir}/logo.png")
 
 generate()
