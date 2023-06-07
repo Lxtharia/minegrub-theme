@@ -1,5 +1,5 @@
 [Unit]
-Description=Cycles splash image for the minegrub grub theme.
+Description=minegrub theme splash update service
 
 [Service]
 ExecStart=/usr/bin/python3 /boot/grub2/themes/minegrub-theme/generate.py
