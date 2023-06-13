@@ -45,3 +45,6 @@ No registry needed!
 Forward slashes only!
 No DLLs needed!
 127.0.0.1 > localhost :)
+No caffeine!
+Zero calories!
+Do not eat!
