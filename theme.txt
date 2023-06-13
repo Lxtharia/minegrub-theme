@@ -86,7 +86,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "Minegrub 1.0.0"
+	text = "Minegrub 1.1.0"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
@@ -98,7 +98,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "Minegrub 1.0.0"
+	text = "Minegrub 1.1.0"
 	font = "Minecraft Regular 30"
 	color = "#3f3f3f"
 }
