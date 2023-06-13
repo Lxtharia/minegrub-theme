@@ -3,6 +3,7 @@
 import os
 import random
 import shutil
+import subprocess
 from os.path import abspath, dirname
 
 from PIL import Image, ImageDraw, ImageFont
@@ -25,7 +26,7 @@ angle = 20
 text_shadow = True
 shadow_offset = 5
 
-def generate():
+def generate() -> None:
     # Choose random splash text
     index = random.randint(0, len(text_options) - 1)
     # Use cached image if it exists
@@ -40,7 +41,13 @@ def generate():
     d = ImageDraw.Draw(img)
     # Draw text and shadow
     if text_shadow:
-        d.text((text_coords[0] + shadow_offset, text_coords[1] + shadow_offset), splash_text, fill=shadow_color, anchor="ms", font=font)
+        d.text(
+            (
+                text_coords[0] + shadow_offset,
+                text_coords[1] + shadow_offset
+            ),
+            splash_text, fill=shadow_color, anchor="ms", font=font,
+        )
     d.text(text_coords, splash_text, fill=text_color, anchor="ms", font=font)
     # Rotate image back to original angle
     img = img.rotate(angle, expand=True)
@@ -59,4 +66,23 @@ def use_logo(index: int):
     print(f"Using splash #{index}: '{text_options[index]}'.")
     shutil.copyfile(f"{cachedir}/{index}.png", f"{repodir}/logo.png")
 
-generate()
+def update_package_count() -> None:
+    packages: int = int(
+        subprocess.run(
+            ["neofetch", "packages", "--package_managers", "off"],
+            stdout=subprocess.PIPE,
+        ).stdout.decode('utf-8').split()[1]
+    )
+    with open(f"{repodir}/theme.txt", 'r') as f:
+        data = f.readlines()
+    new = f'\ttext = "{packages} Packages Installed"\n'
+    # Needs to be updated if lines are added in ./theme.txt
+    data[112] = new
+    data[124] = new
+    with open(f"{repodir}/theme.txt", 'w') as f:
+        f.writelines(data)
+    print(f"Updated packages installed to {packages}.")
+
+if __name__ == "__main__":
+    generate()
+    update_package_count()
