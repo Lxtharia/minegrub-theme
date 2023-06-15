@@ -59,14 +59,18 @@ terminal-font: "Monocraft Regular 22"
 	# n is amount of boot options (each element is (42 height + 30 spacing) = 72px in height) 
 	# top = 40%+( 72 * N + 26 )
 	#
-	### + 170 (for 2 boot options)
-	### + 242 (for 3 boot options)
-	### + 314 (for 4 boot options)
-	### + 386 (for 5 boot options)
-	### + 458 (for 6 boot options)
-	### + 530 (for 7 boot options)
+	### +170 (for 2 boot options)
+	### +242 (for 3 boot options)
+	### +314 (for 4 boot options)
+	### +386 (for 5 boot options)
+	### +458 (for 6 boot options)
+	### +530 (for 7 boot options)
+	###
 	############### CHANGE VALUE HERE ################
+
 	top = 40%+314
+
+	### Don't leave spaces in between the value
 	##################################################
 
 	file = "static_bar.png"
@@ -86,7 +90,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "Minegrub 1.1.0"
+	text = "Minegrub 1.2.0"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
@@ -98,7 +102,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "Minegrub 1.1.0"
+	text = "Minegrub 1.2.0"
 	font = "Minecraft Regular 30"
 	color = "#3f3f3f"
 }
