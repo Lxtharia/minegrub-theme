@@ -5,28 +5,11 @@ import random
 import shutil
 import subprocess
 from os.path import abspath, dirname
+from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-# Annoying dir path things
-repodir = dirname(abspath(__file__))
-if not os.path.isdir(f"{repodir}/cache"):
-    os.mkdir(f"{repodir}/cache")
-resourcedir = f"{repodir}/resources"
-cachedir = f"{repodir}/cache"
-
-with open(f"{resourcedir}/splashes.txt", "r") as f:
-    text_options = [i for i in f.read().splitlines() if i != ""]
-
-font_size = 48
-text_color = "rgb(255, 255, 0)"
-shadow_color = "rgb(59, 64, 2)"
-text_coords = (770, 450)
-angle = 20
-text_shadow = True
-shadow_offset = 5
-
-def generate() -> None:
+def update_splash() -> None:
     # Choose random splash text
     index = random.randint(0, len(text_options) - 1)
     # Use cached image if it exists
@@ -71,18 +54,41 @@ def update_package_count() -> None:
         subprocess.run(
             ["neofetch", "packages", "--package_managers", "off"],
             stdout=subprocess.PIPE,
-        ).stdout.decode('utf-8').split()[1]
+        ).stdout.decode('utf-8').split()[-1]
     )
-    with open(f"{repodir}/theme.txt", 'r') as f:
-        data = f.readlines()
-    new = f'\ttext = "{packages} Packages Installed"\n'
-    # Needs to be updated if lines are added in ./theme.txt
-    data[112] = new
-    data[124] = new
-    with open(f"{repodir}/theme.txt", 'w') as f:
-        f.writelines(data)
+    path = Path(f"{repodir}/theme.txt")
+    text = "Packages Installed"
+    old_lines = path.read_text().splitlines(keepends=False)
+    new_line = f'\ttext = "{packages} {text}"'
+    # Replace lines that have {text} to {new_line}
+    for i, old_line in enumerate(old_lines):
+        if text in old_line:
+            patch(path, i, new_line)
     print(f"Updated packages installed to {packages}.")
 
+def patch(path: Path, linenum: int, new_line: str) -> None:
+    lines = path.read_bytes().splitlines(keepends=True)
+    lines[linenum] = new_line.encode() + b"\n"
+    text = b"".join(lines)
+    path.write_bytes(text)
+
 if __name__ == "__main__":
-    generate()
+    # Annoying dir path things
+    repodir = dirname(abspath(__file__))
+    if not os.path.isdir(f"{repodir}/cache"):
+        os.mkdir(f"{repodir}/cache")
+    resourcedir = f"{repodir}/resources"
+    cachedir = f"{repodir}/cache"
+
+    splash_path = Path(f"{resourcedir}/splashes.txt")
+    text_options = splash_path.read_text().splitlines(keepends=False)
+    font_size = 48
+    text_color = "rgb(255, 255, 0)"
+    shadow_color = "rgb(59, 64, 2)"
+    text_coords = (770, 450)
+    angle = 20
+    text_shadow = True
+    shadow_offset = 5
+
+    update_splash()
     update_package_count()
