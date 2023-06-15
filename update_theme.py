@@ -54,7 +54,7 @@ def update_package_count() -> None:
         subprocess.run(
             ["neofetch", "packages", "--package_managers", "off"],
             stdout=subprocess.PIPE,
-        ).stdout.decode('utf-8').split()[-1]
+        ).stdout.decode().split()[-1]
     )
     path = Path(f"{repodir}/theme.txt")
     text = "Packages Installed"
