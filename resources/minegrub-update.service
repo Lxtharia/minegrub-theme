@@ -2,7 +2,7 @@
 Description=minegrub theme splash update service
 
 [Service]
-ExecStart=/usr/bin/python3 /boot/grub/themes/minegrub-theme/generate.py
+ExecStart=/usr/bin/python3 /boot/grub/themes/minegrub-theme/update_theme.py
 
 [Install]
 WantedBy=multi-user.target
