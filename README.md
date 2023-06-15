@@ -2,11 +2,11 @@
 A Grub Theme in the style of Minecraft!
 
 
-![Minegrub Preview "Screenshot"](resources/preview_minegrub.png)
+![Minegrub Preview "Screenshot"](assets/preview_minegrub.png)
 
 ## Installation
 > ### Note: grub vs grub2
-> - Check if you have a `/boot/grub2` folder instead of a `/boot/grub` folder in which case you would just have to adjust the file paths mentioned here and in the `resources/minegrub-update.service` file
+> - Check if you have a `/boot/grub2` folder instead of a `/boot/grub` folder in which case you would just have to adjust the file paths mentioned here and in the `assets/minegrub-update.service` file
 > - Also if you're not sure, run `grub-mkconfig -V` to check if you have grub version 2 (you should have)
 
 - Clone this repository
@@ -40,8 +40,8 @@ The `update_theme.py` script chooses a random line from `resources/splashes.txt`
 #### ...without systemd
 - Just run `python /boot/grub/themes/minegrub-theme/update_theme.py` (from anywhere) after boot using whatever method works for you
 #### ...with systemd
-- Edit `./resources/minegrub-update.service` to use `/boot/grub2/` on line 5 if applicable
-- Copy `./resources/minegrub-update.service` to `/etc/systemd/system`
+- Edit `./assets/minegrub-update.service` to use `/boot/grub2/` on line 5 if applicable
+- Copy `./assets/minegrub-update.service` to `/etc/systemd/system`
 - Enable the service: `systemctl enable minegrub-update.service`
 - If it's not updating after rebooting (it won't update on the first reboot because it updates after you boot into your system), check systemctl status minegrub-update.service for any errors (for example if pillow isn't installed in the correct scope)
 
