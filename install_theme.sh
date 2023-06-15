@@ -21,11 +21,17 @@ else
 	exit 
 fi
 
+# Choosing a background, comment this out if it's annoying
+echo "First, lets choose a background, press Enter if you want to leave it."
+$SCRIPT_DIR/choose_background.sh
 
 theme_path="$grub_path/themes/minegrub-theme"
 # Create theme folder if it does not exist yet
 mkdir -p $theme_path
 
+
+# This prevents the directory with alternative backgrounds to clutter the efi partition
+mv $SCRIPT_DIR/backgrounds $SCRIPT_DIR/.backgrounds
 
 echo "=> Copying the theme to $theme_path"
 # copy recursive, update, verbose
@@ -36,4 +42,6 @@ cp -uv $SCRIPT_DIR/assets/minegrub-update.service /etc/systemd/system/
 
 echo "== Done! Make sure to add/change this line in /etc/default/grub /!\\"
 echo -e "\tGRUB_THEME=$grub_path/themes/minegrub-theme/theme.txt"
+
+mv $SCRIPT_DIR/.backgrounds $SCRIPT_DIR/backgrounds
 
