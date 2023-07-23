@@ -13,6 +13,10 @@ A Grub Theme in the style of Minecraft!
 ```
 git clone https://github.com/Lxtharia/minegrub-theme.git
 ```
+- Create the theme folder
+```
+sudo mkdir /boot/grub/themes/minegrub-theme
+```
 - Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
 ```
 sudo cp -ruv ./minegrub-theme/* /boot/grub/themes/minegrub-theme/
