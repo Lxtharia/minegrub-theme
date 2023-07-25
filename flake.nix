@@ -23,7 +23,7 @@
           name = "minegrub-theme";
           src = "${self}";
 
-          buildInputs = [ ] ++ optional customSplash
+          buildInputs = optional customSplash
             [
               (pkgs.python3.withPackages
                 (p: [ p.pillow ]))
