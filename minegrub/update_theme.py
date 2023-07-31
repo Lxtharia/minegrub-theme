@@ -16,8 +16,8 @@ def update_splash() -> None:
     if os.path.isfile(f"{cachedir}/{index}.png"):
         return use_logo(index)
     splash_text = text_options[index]
-    font = ImageFont.truetype(f"{resourcedir}/MinecraftRegular-Bmg3.otf", font_size)
-    img = Image.open(f"{resourcedir}/logo_clear.png")
+    font = ImageFont.truetype(f"{assetdir}/MinecraftRegular-Bmg3.otf", font_size)
+    img = Image.open(f"{assetdir}/logo_clear.png")
     original_size = img.size
     # Rotate image before drawing text
     img = img.rotate(360 - angle, expand=True)
@@ -47,7 +47,7 @@ def update_splash() -> None:
 
 def use_logo(index: int):
     print(f"Using splash #{index}: '{text_options[index]}'.")
-    shutil.copyfile(f"{cachedir}/{index}.png", f"{repodir}/logo.png")
+    shutil.copyfile(f"{cachedir}/{index}.png", f"{themedir}/logo.png")
 
 def update_package_count() -> None:
     packages: int = int(
@@ -56,7 +56,7 @@ def update_package_count() -> None:
             stdout=subprocess.PIPE,
         ).stdout.decode().split()[-1]
     )
-    path = Path(f"{repodir}/theme.txt")
+    path = Path(f"{themedir}/theme.txt")
     text = "Packages Installed"
     old_lines = path.read_text().splitlines(keepends=False)
     new_line = f'\ttext = "{packages} {text}"'
@@ -74,13 +74,13 @@ def patch(path: Path, linenum: int, new_line: str) -> None:
 
 if __name__ == "__main__":
     # Annoying dir path things
-    repodir = dirname(abspath(__file__))
-    if not os.path.isdir(f"{repodir}/cache"):
-        os.mkdir(f"{repodir}/cache")
-    resourcedir = f"{repodir}/resources"
-    cachedir = f"{repodir}/cache"
+    themedir = dirname(abspath(__file__))
+    if not os.path.isdir(f"{themedir}/cache"):
+        os.mkdir(f"{themedir}/cache")
+    assetdir = f"{themedir}/assets"
+    cachedir = f"{themedir}/cache"
 
-    splash_path = Path(f"{resourcedir}/splashes.txt")
+    splash_path = Path(f"{assetdir}/splashes.txt")
     text_options = splash_path.read_text().splitlines(keepends=False)
     font_size = 48
     text_color = "rgb(255, 255, 0)"
