@@ -12,30 +12,30 @@ A Grub Theme in the style of Minecraft!
 > - Also if you're not sure, run `grub-mkconfig -V` to check if you have grub version 2 (you should have)
 
 - Clone this repository
-```
-git clone https://github.com/Lxtharia/minegrub-theme.git
-```
+    ```
+    git clone https://github.com/Lxtharia/minegrub-theme.git   
+    ```
 - ### Using the installation script
     - Run the installation script as root and at your own risk (It's run as sudo after all)
-    - This will copy the theme and the systemd service
-    - ```
-    sudo ./install_theme.sh
         ```
+        sudo ./install_theme.sh
+        ```
+    - This will copy the theme and the systemd service
     - It will also ask you if you want to select a specific background from the `./backgrounds/` directory! 
 
 - ### Manually
     - Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
-    ```
-    cd ./minegrub-theme
-    sudo cp -ruv ./minegrub /boot/grub/themes/
-    ```
+        ```
+        cd ./minegrub-theme
+        sudo cp -ruv ./minegrub /boot/grub/themes/
+        ```
 - Change/add this line in your `/etc/default/grub`:
-- ```
-GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
-    ```
+      ```
+      GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
+      ```
 - Update your live grub config by running
-- ```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+    ```
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
     ```
 - You're good to go!
 
