@@ -2,11 +2,11 @@
 A Grub Theme in the style of Minecraft!
 
 
-![Minegrub Preview "Screenshot"](assets/preview_minegrub.png)
+![Minegrub Preview "Screenshot"](resources/preview_minegrub.png)
 
 ## Installation
 > ### Note: grub vs grub2
-> - Check if you have a `/boot/grub2` folder instead of a `/boot/grub` folder in which case you would just have to adjust the file paths mentioned here and in the `assets/minegrub-update.service` file
+> - If you have a `/boot/grub2` folder instead of a `/boot/grub` folder , you need to adjust the file paths mentioned here and in the `minegrub-update.service` file
 > - Also if you're not sure, run `grub-mkconfig -V` to check if you have grub version 2 (you should have)
 
 ### Manually
@@ -17,11 +17,12 @@ git clone https://github.com/Lxtharia/minegrub-theme.git
 ```
 - Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
 ```
-sudo cp -ruv ./minegrub-theme/* /boot/grub/themes/minegrub-theme/
+cd ./minegrub-theme
+sudo cp -ruv ./minegrub /boot/grub/themes/
 ```
 - Change/add this line in your `/etc/default/grub`:
 ```
-GRUB_THEME=/boot/grub/themes/minegrub-theme/theme.txt
+GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
 ```
 - Update your live grub config by running
 ```
@@ -72,15 +73,16 @@ The `update_theme.py` script chooses a random line from `resources/splashes.txt`
     `sudo -H pip3 install pillow`
   - It's important to use `sudo -H`, because it needs to be available for the root user
 - To add new splash texts simply edit `./resources/splashes.txt` and add them to the end of the file (if you add it at the beginning or in the middle, some splashes may never get used because the image cashing uses the line of the file the splash is on)
-- If you want to remove splashes you should reset the cache by deleting `/boot/grub/themes/minegrub-theme/cache`
+- If you want to remove splashes you should reset the cache by deleting `/boot/grub/themes/minegrub/cache`
+
 ### Update splash and "Packages Installed"...
 #### ...without systemd
-- Just run `python /boot/grub/themes/minegrub-theme/update_theme.py` (from anywhere) after boot using whatever method works for you
+- Just run `python /boot/grub/themes/minegrub/update_theme.py` (from anywhere) after boot using whatever method works for you
 #### ...with systemd
-- Edit `./assets/minegrub-update.service` to use `/boot/grub2/` on line 5 if applicable
-- Copy `./assets/minegrub-update.service` to `/etc/systemd/system`
+- Edit `./minegrub-update.service` to use `/boot/grub2/` on line 5 if applicable
+- Copy `./minegrub-update.service` to `/etc/systemd/system`
 - Enable the service: `systemctl enable minegrub-update.service`
-- If it's not updating after rebooting (it won't update on the first reboot because it updates after you boot into your system), check systemctl status minegrub-update.service for any errors (for example if pillow isn't installed in the correct scope)
+- If it's not updating after rebooting (it won't update on the first reboot because it updates after you boot into your system), check `systemctl status minegrub-update.service` for any errors (for example if pillow isn't installed in the correct scope)
 
 ## Adjusting for a different amount of boot options:
 - When you have more/less than 4 boot options, you might want to adjust the height of the bottom bar (that says "Options" and "Console")
