@@ -6,10 +6,10 @@ if [[ `id -u` -ne 0 ]] ; then
 	exit
 fi 
 
-# get the path of the cloned repository 
+# this should be the directory of the clones repo
 SCRIPT_DIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 # I accidentally deleted the above line once and it copied / into the theme folder, so lets prevent this
-if [[ -z $SCRIPT_DIR ]] ; then echo "Something didn't work, so to not copy the entirety of root to your efi partition, this script is gonna exit"; exit; fi
+if [[ -z $SCRIPT_DIR ]] ; then echo "Something didn't work, exiting"; exit; fi
 
 # check if the grub folder is called grub/ or grub2/
 if [ -d /boot/grub ]    ; then
@@ -20,28 +20,20 @@ else
 	echo "Can't find a /boot/grub or /boot/grub2 folder. Exiting."
 	exit 
 fi
+theme_path="$grub_path/themes/minegrub"
 
 # Choosing a background, comment this out if it's annoying
-echo "First, lets choose a background, press Enter if you want to leave it."
+echo "First, lets choose a background, press Enter to skip this step."
 $SCRIPT_DIR/choose_background.sh
 
-theme_path="$grub_path/themes/minegrub-theme"
-# Create theme folder if it does not exist yet
-mkdir -p $theme_path
-
-
-# This prevents the directory with alternative backgrounds to clutter the efi partition
-mv $SCRIPT_DIR/backgrounds $SCRIPT_DIR/.backgrounds
-
-echo "=> Copying the theme to $theme_path"
 # copy recursive, update, verbose
-cp -ruv $SCRIPT_DIR/* $theme_path | awk '$0 !~ /skipped/ { print "\t"$0 }'
+echo "=> Copying the theme to $theme_path"
+cd $SCRIPT_DIR && cp -ruv ./minegrub $grub_path/themes/ | awk '$0 !~ /skipped/ { print "\t"$0 }'
 
-echo -ne "=> Installing splash and package label update service\n\t"
-cp -uv $SCRIPT_DIR/assets/minegrub-update.service /etc/systemd/system/
+echo -ne "=> Installing systemd service to update splash and package labels on boot\n\t"
+cp -uv $SCRIPT_DIR/minegrub-update.service /etc/systemd/system/
 
-echo "== Done! Make sure to add/change this line in /etc/default/grub /!\\"
-echo -e "\tGRUB_THEME=$grub_path/themes/minegrub-theme/theme.txt"
-
-mv $SCRIPT_DIR/.backgrounds $SCRIPT_DIR/backgrounds
+echo
+echo "== Done! Make sure to add/change this line in /etc/default/grub :"
+echo -e "\tGRUB_THEME=$theme_path/theme.txt"
 

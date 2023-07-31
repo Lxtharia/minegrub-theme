@@ -35,5 +35,5 @@ echo "Chose option $chosen_ind:  $chosen_backgound"
 if [[ "$chosen_backgound" == "" ]]; then
 	echo Not changing background.
 else 
-	cp "$chosen_backgound" ../background.png
+	cp "$chosen_backgound" $SCRIPT_DIR/minegrub/background.png
 fi 
