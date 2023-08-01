@@ -37,7 +37,7 @@ The `update_theme.py` script chooses a random line from `resources/splashes.txt`
   - It's important to use `sudo -H`, because it needs to be available for the root user
 - To add new splash texts simply edit `./resources/splashes.txt` and add them to the end of the file (if you add it at the beginning or in the middle, some splashes may never get used because the image cashing uses the line of the file the splash is on)
 - If you want to remove splashes you should reset the cache by deleting `/boot/grub/themes/minegrub/cache`
-
+- If you want to get the splash you want, run `python update_theme.py __the_splash__`
 ### Update splash and "Packages Installed"...
 #### ...without systemd
 - Just run `python /boot/grub/themes/minegrub/update_theme.py` (from anywhere) after boot using whatever method works for you
