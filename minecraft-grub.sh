@@ -15,7 +15,12 @@ set -e
 PATH="/usr/bin:/bin:/sbin"
 NAME="minecraft-grub"
 DESC="Update the minecraft-grub theme."
-THEME_DIR="/boot/grub/themes/minegrub"
+
+if [[ -d "/boot/grub2" ]] ; then
+	THEME_DIR="/boot/grub2/themes/minegrub"
+else
+	THEME_DIR="/boot/grub/themes/minegrub"
+fi
 
 case "${1}" in
 	"start"|"restart"|"reload"|"force-reload")
