@@ -11,6 +11,8 @@ A Grub Theme in the style of Minecraft!
 > - If you have a `/boot/grub2` folder instead of a `/boot/grub` folder , you need to adjust the file paths mentioned here and in the `minegrub-update.service` file
 > - Also if you're not sure, run `grub-mkconfig -V` to check if you have grub version 2 (you should have)
 
+### Manually
+
 - Clone this repository
     ```
     git clone https://github.com/Lxtharia/minegrub-theme.git   
@@ -40,6 +42,41 @@ A Grub Theme in the style of Minecraft!
 - You're good to go!
 
 ---
+
+### NixOS module (flake)
+
+<details><summary>This is a minimal example</summary>
+
+```nix
+# flake.nix
+{
+  inputs.minegrub-theme.url = "github:Lxtharia/minegrub-theme";
+  # ...
+
+  outputs = {nixpkgs, ...} @ inputs: {
+    nixosConfigurations.HOSTNAME = nixpkgs.lib.nixosSystem {
+      modules = [
+        ./configuration.nix
+        inputs.minegrub.nixosModules.default
+      ];
+    };
+  }
+}
+
+# configuration.nix
+{ pkgs, ... }: {
+
+  boot.loader.grub = {
+    minegrub-theme = {
+      enable = true;
+      splash = "100% Flakes!";
+    };
+    # ...
+  };
+}
+```
+</details>
+
 
 ## Random splash texts and accurate "x Packages Installed" text!
 The `update_theme.py` script chooses a random line from `resources/splashes.txt` and generates and replaces the `logo.png` which holds the splash text, as well as updates the amount of packages currently installed
