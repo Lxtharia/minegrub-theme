@@ -77,14 +77,14 @@ The `update_theme.py` script chooses a random line from `resources/splashes.txt`
 - If you want to get a specific splash for the next boot, run `python update_theme.py "Splashing!"`
 
 ### Update splash and "Packages Installed"...
-#### ...without systemd
+#### ...manually
 - Just run `python /boot/grub/themes/minegrub/update_theme.py` (from anywhere) after boot using whatever method works for you
 
 #### ...with init-d (SysVinit)
-- Just copy the `minecraft-grub.sh` under `/etc/init.d` as `minecraft-grub` then run `update-rc.d minecraft-grub defaults` as root privileges.
+- Just copy the `./minegrub-SysVinit.sh` under `/etc/init.d` as `minecraft-grub` then run `update-rc.d minecraft-grub defaults` as root privileges:
 ```bash
-sudo cp -v "./minecraft-grub.sh" "/etc/init.d/minecraft-grub"
-sudo chmod u+x "/etc/init.d/minecraft-grub" # The file already permitted but to be sure, you can type.
+sudo cp -v "./minegrub-SysVinit.sh" "/etc/init.d/minecraft-grub"
+sudo chmod u+x "/etc/init.d/minecraft-grub" # Just to be sure the permissions are set correctly.
 sudo update-rc.d minecraft-grub defaults
 ```
 
