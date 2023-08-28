@@ -28,10 +28,21 @@ $SCRIPT_DIR/choose_background.sh
 
 # copy recursive, update, verbose
 echo "=> Copying the theme to $theme_path"
-cd $SCRIPT_DIR && cp -ruv ./minegrub $grub_path/themes/ | awk '$0 !~ /skipped/ { print "\t"$0 }'
+cd $SCRIPT_DIR && cp -ruv ./minegrub $grub_path/themes/ | sed '/skipped/d'
 
-echo -ne "=> Installing systemd service to update splash and package labels on boot\n\t"
-cp -uv $SCRIPT_DIR/minegrub-update.service /etc/systemd/system/
+if [ -d /etc/systemd/system/ ]    ; then
+	echo -ne "=> Installing systemd service to update splash and package labels on boot\n\t"
+	cp -uv $SCRIPT_DIR/minegrub-update.service /etc/systemd/system/
+	systemctl enable minegrub-update.service
+	echo -e "\tDone."
+fi
+
+if [ -d /etc/init.d/ ]    ; then
+	echo -ne "=> Installing init.d service to update splash and package labels on boot\n\t"
+	cp -uv $SCRIPT_DIR/minegrub-SysVinit.sh /etc/init.d/minecraft-grub
+	update-rc.d minecraft-grub defaults
+	echo -e "\tDone."
+fi
 
 echo
 echo "== Done! Make sure to add/change this line in /etc/default/grub :"
