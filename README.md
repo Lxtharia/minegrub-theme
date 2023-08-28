@@ -15,6 +15,10 @@ A Grub Theme in the style of Minecraft!
 ```
 git clone https://github.com/Lxtharia/minegrub-theme.git
 ```
+- (optional) Choose a background 
+```
+./choose-background.sh  # or just copy a custom image to minegrub/background.png
+```
 - Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
 ```
 cd ./minegrub-theme
