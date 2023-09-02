@@ -9,17 +9,18 @@ from os.path import abspath, dirname
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
+import hashlib
 
 def update_splash(slogan: str) -> None:
     # Choose random splash text
     if slogan: # I just want it
         splash_text = slogan
     else:
-        index = random.randint(0, len(text_options) - 1)
+        splash_text = random.choice(text_options)
         # Use cached image if it exists
-        if os.path.isfile(f"{cachedir}/{index}.png"):
-            return use_logo(index)
-        splash_text = text_options[index]
+        splash_file = cache_file_name(splash_text)
+        if os.path.isfile(splash_file):
+            return use_logo(splash_text, splash_file)
     font = ImageFont.truetype(f"{assetdir}/MinecraftRegular-Bmg3.otf", font_size)
     img = Image.open(f"{assetdir}/logo_clear.png")
     original_size = img.size
@@ -51,12 +52,17 @@ def update_splash(slogan: str) -> None:
         print(f"Using splash from CLI: '{splash_text}'.")
         new.save(f"{themedir}/logo.png")
     else:
-        new.save(f"{cachedir}/{index}.png")
-        use_logo(index)
+        new.save(splash_file)
+        use_logo(splash_text, splash_file)
 
-def use_logo(index: int):
-    print(f"Using splash #{index}: '{text_options[index]}'.")
-    shutil.copyfile(f"{cachedir}/{index}.png", f"{themedir}/logo.png")
+def use_logo(splash_text: str, splash_file: str):
+    print(f"Using splash {splash_file}: '{splash_text}'.")
+    shutil.copyfile(splash_file, f"{themedir}/logo.png")
+
+def cache_file_name(splash_text: str) -> str:
+    h = hashlib.new('md5')
+    h.update(splash_text.encode())
+    return f"{cachedir}/{h.hexdigest()}.png"
 
 def update_package_count() -> None:
     packages: int = int(
