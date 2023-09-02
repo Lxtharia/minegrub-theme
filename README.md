@@ -76,7 +76,7 @@ The `update_theme.py` script chooses a random line from `resources/splashes.txt`
   - Install Pillow either with the python-pillow package from the AUR or with
     `sudo -H pip3 install pillow`
   - It's important to use `sudo -H`, because it needs to be available for the root user
-- To add new splash texts simply edit `./resources/splashes.txt` and add them to the end of the file (if you add it at the beginning or in the middle, some splashes may never get used because the image cashing uses the line of the file the splash is on)
+- To add new splash texts simply edit `./minegrub/assets/splashes.txt` and add them to the end of the file (if you add it at the beginning or in the middle, some splashes may never get used because the image cashing uses the line of the file the splash is on)
 - If you want to remove splashes you should reset the cache by deleting `/boot/grub/themes/minegrub/cache`
 - If you want to get a specific splash for the next boot, run `python update_theme.py "Splashing!"`
 
