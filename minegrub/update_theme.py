@@ -87,16 +87,17 @@ def patch(path: Path, linenum: int, new_line: str) -> None:
     text = b"".join(lines)
     path.write_bytes(text)
 
-def get_slogan() -> str:
+def get_args() -> (str, str):
     argv_len = len(sys.argv)
     if argv_len == 1:
-        the_slogan_you_want = ""
+        return "", ""
     elif argv_len == 2:
-        the_slogan_you_want = sys.argv[1]
+        return sys.argv[1], ""
+    elif argv_len == 3:
+        return sys.argv[1], sys.argv[2]
     else:
-        the_slogan_you_want = ""
-        print("You want too much and only can get the random one")
-    return the_slogan_you_want
+        fprintf(f"WARNING: expected at most 2 arguments, but got {len(sys.argv)}.")
+        return sys.argv[1], sys.argv[2]
 
 def update_background(background_file = "") -> None:
     if background_file == "":   # no background given, chose randomly
@@ -125,8 +126,8 @@ if __name__ == "__main__":
     angle = 20
     text_shadow = True
     shadow_offset = 5
-    slogan = get_slogan()
+    bg_file, slogan = get_args()
 
+    update_background(bg_file)
     update_splash(slogan)
     update_package_count()
-    update_background()

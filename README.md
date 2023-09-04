@@ -15,10 +15,8 @@ A Grub Theme in the style of Minecraft!
 ```
 git clone https://github.com/Lxtharia/minegrub-theme.git
 ```
-- (optional) Choose a background 
-```
-./choose-background.sh  # or just copy a custom image to minegrub/background.png
-```
+- (optional) Choose a background
+  If you do not want to use the update script, you can use `./choose-background.sh` or just copy a custom image to `minegrub/background.png`
 - Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
 ```
 cd ./minegrub-theme
@@ -70,14 +68,16 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 
 ## Random splash texts and accurate "x Packages Installed" text!
-The `update_theme.py` script chooses a random line from `resources/splashes.txt` and generates and replaces the `logo.png` which holds the splash text, as well as updates the amount of packages currently installed
+The `update_theme.py` script chooses a random line from `assets/splashes.txt` and generates and replaces the `logo.png` which holds the splash text, as well as updates the amount of packages currently installed. It also randomly chooses a file from `backgrounds/` (ignoring files beginning with an underscore) as the background image.
 - Make sure `neofetch` is installed
 - Make sure Python 3 (or an equivalent) and the Pillow python package are installed
   - Install Pillow either with the python-pillow package from the AUR or with
     `sudo -H pip3 install pillow`
   - It's important to use `sudo -H`, because it needs to be available for the root user
 - To add new splash texts simply edit `./minegrub/assets/splashes.txt` and add them to the file.
-- If you want to get a specific splash for the next boot, run `python update_theme.py 'Splashing!'`
+- Delete backgrounds you don't want from `./minegrub/backgrounds/` or rename them to start with an underscore. Filenames beginning with `_` will be ignored. You can also add your own images.
+- If you want to get a specific splash and/or background for the next boot, run `python update_theme.py [BACKGROUND_FILE [SPLASH]]`, e.g. `update_theme.py 'backgrounds/1.15 - [Buzzy Bees].png' 'Splashing!'`
+  - Empty string parameters will be replaced by a random choice, e.g. `python update_theme.py '' 'Splashing!'` for a random background and the splash `Splashing!`.
 
 ### Update splash and "Packages Installed"...
 #### ...manually
