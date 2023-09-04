@@ -98,6 +98,16 @@ def get_slogan() -> str:
         print("You want too much and only can get the random one")
     return the_slogan_you_want
 
+def update_background(background_file = "") -> None:
+    if background_file == "":   # no background given, chose randomly
+        list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '_']
+        background_file = f"{themedir}/backgrounds/{random.choice(list_background_files)}"
+    elif not os.path.isfile(background_file):   # background given, check if file exists
+        fprintf(stderr, f"ERROR: The file {background_file} does not exist.")
+        quit(1)
+    shutil.copyfile(background_file, f"{themedir}/background.png")
+    print(f"Using background '{background_file}'.")
+
 if __name__ == "__main__":
     # Annoying dir path things
     themedir = dirname(abspath(__file__))
@@ -119,3 +129,4 @@ if __name__ == "__main__":
 
     update_splash(slogan)
     update_package_count()
+    update_background()
