@@ -16,7 +16,7 @@ A Grub Theme in the style of Minecraft!
 git clone https://github.com/Lxtharia/minegrub-theme.git
 ```
 - (optional) Choose a background
-  If you do not want to use the update script, you can use `./choose-background.sh` or just copy a custom image to `minegrub/background.png`
+  - If you do not want to use the update script, you can use `./choose-background.sh` or just copy a custom image to `minegrub/background.png`
 - Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
 ```
 cd ./minegrub-theme
