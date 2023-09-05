@@ -111,6 +111,7 @@ sudo update-rc.d minecraft-grub defaults
 - https://github.com/toboot for giving me this wonderful idea!
 - the internet for giving me wisdom lmao (Mainly http://wiki.rosalab.ru/en/index.php/Grub2_theme_tutorial)
 - The contributors for contributing and giving me some motivation to improve some little things here and there
+- [Vanilla Tweaks](https://vanillatweaks.net) for some of the backgrounds
 
 
 Font downloaded from https://www.fontspace.com/minecraft-font-f28180 and used for non commercial use.
