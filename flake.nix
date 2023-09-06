@@ -30,15 +30,16 @@
             ];
 
           patchPhase = ''
-            sed -i '$d' update_theme.py
+            sed -i '$d' minegrub/update_theme.py
           '';
 
           buildPhase = optional customSplash ''
             echo "${splash}" > resources/splashes.txt
-            python update_theme.py
+            python minegrub/update_theme.py
           '';
 
           installPhase = ''
+            cd minegrub
             mkdir -p $out/grub/themes/minegrub
             cp *.png $out/grub/themes/minegrub
             cp *.pf2 $out/grub/themes/minegrub
