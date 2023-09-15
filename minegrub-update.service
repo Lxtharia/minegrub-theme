@@ -1,8 +1,9 @@
 [Unit]
 Description=minegrub theme splash update service
+After=hibternate.target
 
 [Service]
 ExecStart=/usr/bin/python3 /boot/grub/themes/minegrub/update_theme.py
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target hibernate.target
