@@ -96,15 +96,18 @@ def get_args() -> (str, str):
     elif argv_len == 3:
         return sys.argv[1], sys.argv[2]
     else:
-        fprintf(f"WARNING: expected at most 2 arguments, but got {len(sys.argv)}.")
+        print(f"WARNING: expected at most 2 arguments, but got {len(sys.argv)}.", file=sys.stderr)
         return sys.argv[1], sys.argv[2]
 
 def update_background(background_file = "") -> None:
     if background_file == "":   # no background given, chose randomly
         list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '_']
+        if len(list_background_files) == 0:
+            print("No background files available to choose from, background will remain unchanged.", file=sys.stderr)
+            return  # do nothing if there is no file to use
         background_file = f"{themedir}/backgrounds/{random.choice(list_background_files)}"
     elif not os.path.isfile(background_file):   # background given, check if file exists
-        fprintf(stderr, f"ERROR: The file {background_file} does not exist.")
+        print(f"ERROR: The file {background_file} does not exist.", file=sys.stderr)
         quit(1)
     shutil.copyfile(background_file, f"{themedir}/background.png")
     print(f"Using background '{background_file}'.")

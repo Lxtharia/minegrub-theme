@@ -16,7 +16,9 @@ A Grub Theme in the style of Minecraft!
 git clone https://github.com/Lxtharia/minegrub-theme.git
 ```
 - (optional) Choose a background
+  - If you want to use the update script, copy an arbitrary number of images you would like to use to `minegrub/backgrounds/`. You can find some options in `background_options/` but you can also use your own images.
   - If you do not want to use the update script, you can use `./choose-background.sh` or just copy a custom image to `minegrub/background.png`
+
 - Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
 ```
 cd ./minegrub-theme
@@ -76,7 +78,7 @@ The `update_theme.py` script chooses a random line from `assets/splashes.txt` an
   - It's important to use `sudo -H`, because it needs to be available for the root user
 - To add new splash texts simply edit `./minegrub/assets/splashes.txt` and add them to the file.
 - Delete backgrounds you don't want from `./minegrub/backgrounds/` or rename them to start with an underscore. Filenames beginning with `_` will be ignored. You can also add your own images.
-- If you want to get a specific splash and/or background for the next boot, run `python update_theme.py [BACKGROUND_FILE [SPLASH]]`, e.g. `update_theme.py 'backgrounds/1.15 - [Buzzy Bees].png' 'Splashing!'`
+- If you want to get a specific splash and/or background for the next boot, run `python update_theme.py [BACKGROUND_FILE [SPLASH]]`, e.g. `python update_theme.py 'backgrounds/1.15 - [Buzzy Bees].png' 'Splashing!'`
   - Empty string parameters will be replaced by a random choice, e.g. `python update_theme.py '' 'Splashing!'` for a random background and the splash `Splashing!`.
 
 ### Update splash and "Packages Installed"...
