@@ -87,16 +87,30 @@ def patch(path: Path, linenum: int, new_line: str) -> None:
     text = b"".join(lines)
     path.write_bytes(text)
 
-def get_slogan() -> str:
+def get_args() -> (str, str):
     argv_len = len(sys.argv)
     if argv_len == 1:
-        the_slogan_you_want = ""
+        return "", ""
     elif argv_len == 2:
-        the_slogan_you_want = sys.argv[1]
+        return sys.argv[1], ""
+    elif argv_len == 3:
+        return sys.argv[1], sys.argv[2]
     else:
-        the_slogan_you_want = ""
-        print("You want too much and only can get the random one")
-    return the_slogan_you_want
+        print(f"WARNING: expected at most 2 arguments, but got {len(sys.argv)}.", file=sys.stderr)
+        return sys.argv[1], sys.argv[2]
+
+def update_background(background_file = "") -> None:
+    if background_file == "":   # no background given, chose randomly
+        list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '_']
+        if len(list_background_files) == 0:
+            print("No background files available to choose from, background will remain unchanged.", file=sys.stderr)
+            return  # do nothing if there is no file to use
+        background_file = f"{themedir}/backgrounds/{random.choice(list_background_files)}"
+    elif not os.path.isfile(background_file):   # background given, check if file exists
+        print(f"ERROR: The file {background_file} does not exist.", file=sys.stderr)
+        quit(1)
+    shutil.copyfile(background_file, f"{themedir}/background.png")
+    print(f"Using background '{background_file}'.")
 
 if __name__ == "__main__":
     # Annoying dir path things
@@ -115,7 +129,8 @@ if __name__ == "__main__":
     angle = 20
     text_shadow = True
     shadow_offset = 5
-    slogan = get_slogan()
+    bg_file, slogan = get_args()
 
+    update_background(bg_file)
     update_splash(slogan)
     update_package_count()
