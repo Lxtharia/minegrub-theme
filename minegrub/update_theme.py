@@ -100,6 +100,7 @@ def get_args() -> (str, str):
         return sys.argv[1], sys.argv[2]
 
 def update_background(background_file = "") -> None:
+    Path(f"{themedir}/backgrounds/").mkdir(exist_ok=True)
     if background_file == "":   # no background given, chose randomly
         list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '_']
         if len(list_background_files) == 0:
