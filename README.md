@@ -75,7 +75,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 - The formula and some precalculated values (for 2,3,4,5... boot options) are in the `theme.txt`, so you should be able to easily change it to the correct value.
 
 ## Random splash texts and accurate "x Packages Installed" text!
-The `update_theme.py` script chooses a random line from `assets/splashes.txt` and generates and replaces the `logo.png` which holds the splash text, as well as updates the amount of packages currently installed. It also randomly chooses a file from `backgrounds/` (ignoring files beginning with an underscore) as the background image.
+The `update_theme.py` script chooses a random line from `assets/splashes.txt` and generates and replaces the `logo.png` which holds the splash text, as well as updates the amount of packages currently installed. It also randomly chooses a file from `backgrounds/` (ignoring hidden files beginning with a dot) as the background image.
 - Make sure `neofetch` is installed
 - Make sure Python 3 (or an equivalent) and the Pillow python package are installed
   - Install Pillow either with the python-pillow package from the AUR or with
