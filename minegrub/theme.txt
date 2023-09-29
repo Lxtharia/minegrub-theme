@@ -18,7 +18,7 @@ terminal-font: "Monocraft Regular 22"
 	# top pixmap is 17px in height 
 	# left pixmap is 6px in width 
 	# the text needs to be 3 pixels above and 3 pixels to the left
-	left = 50%-397 
+	left = 50%-497 
 	top = 40%+14
 	width = 800
 	height = 500
@@ -34,9 +34,9 @@ terminal-font: "Monocraft Regular 22"
 
 
 + boot_menu {
-	left = 50%-400
+	left = 50%-500
 	top = 40%
-	width = 800
+	width = 1000
 	height = 500
 
 	item_font = "Minecraft Regular 30"

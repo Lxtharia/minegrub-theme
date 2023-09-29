@@ -1,50 +1,10 @@
-I use Arch BTW!
-Now with 100% more Linux!
-GNU's not UNIX!
-Praise Tux!
-Wine is not an Emulator!
-I am Root!
-Still stuck in Vim!
-Won't sell your data!
-Now with Rust!
-Full of Distros!
-Do redistribute!
-May contain penguins!
-Support FOSS devs!
-Bailing out!
-Everything is a file!
-May contain systemd...
-Open source!
-Made in Finland!
-It's not a bug, it's a feature!
-It's GNU/Linux!
-Sudo rm -rf!
-Yes, do as I say!
-90% bug free!
-Not water proof!
-Used by billions!
-12345 is a bad password!
-Turing complete!
-Woah.
-I have a suggestion.
-pls fix
-beep beep
-Boop!
-Splash!
-[Insert splash text here]
-Made by "real" people!
-Viruses have no power here!
-No place like ~
-Used in space!
-No reboots required!
-Case sensitive!
-.exe won't work here!
-No ads!
-May contain spaghetti...
-No registry needed!
-Forward slashes only!
-No DLLs needed!
-127.0.0.1 > localhost :)
-No caffeine!
-Zero calories!
-Do not eat!
+Per Aspera Ad Astra
+Do not go gentle into that good night.
+Look on my Works, ye Mighty, and despair!
+Ô temps ! suspends ton vol
+On n'est pas sérieux quand on a 0x11 ans.
+Le vent se lève... il faut tenter de vivre
+Demain, dès l'aube
+C'est une chose étrange à la fin que le monde.
+Mignonne, allons voir si la rose
+L'homme est libre au moment qu'il veut l'être.
