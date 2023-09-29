@@ -44,6 +44,10 @@
             cp *.png $out/grub/themes/minegrub
             cp *.pf2 $out/grub/themes/minegrub
             cp theme.txt $out/grub/themes/minegrub
+            cd ..
+            mkdir -p $out/grub/themes/minegrub/backgrounds
+            cd background_options
+            cp *.png $out/grub/themes/minegrub/backgrounds
           '';
         };
     in
