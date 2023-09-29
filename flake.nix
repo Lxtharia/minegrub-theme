@@ -34,6 +34,8 @@
           '';
 
           buildPhase = optional customSplash ''
+            mkdir -p minegrub/backgrounds
+            cp background_options/*.png minegrub/backgrounds/
             echo "${splash}" > resources/splashes.txt
             python minegrub/update_theme.py
           '';
