@@ -18,9 +18,9 @@ terminal-font: "Monocraft Regular 22"
 	# top pixmap is 17px in height 
 	# left pixmap is 6px in width 
 	# the text needs to be 3 pixels above and 3 pixels to the left
-	left = 50%-297 
+	left = 50%-397 
 	top = 40%+14
-	width = 600
+	width = 800
 	height = 500
 
 	item_font = "Minecraft Regular 30"
@@ -34,9 +34,9 @@ terminal-font: "Monocraft Regular 22"
 
 
 + boot_menu {
-	left = 50%-300
+	left = 50%-400
 	top = 40%
-	width = 600
+	width = 800
 	height = 500
 
 	item_font = "Minecraft Regular 30"
@@ -68,7 +68,7 @@ terminal-font: "Monocraft Regular 22"
 	###
 	############### CHANGE VALUE HERE ################
 
-	top = 40%+314
+	top = 40%+530
 
 	### Don't leave spaces in between the value
 	##################################################
@@ -114,7 +114,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "647 Packages Installed"
+	text = "The only way out is through."
 	font = "Minecraft Regular 30"
 	color = "white"
 }
@@ -126,7 +126,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "647 Packages Installed"
+	text = "The only way out is through."
 	font = "Minecraft Regular 30"
 	color = "#3f3f3f"
 }
