@@ -101,7 +101,7 @@ def get_args() -> (str, str):
 
 def update_background(background_file = "") -> None:
     if background_file == "":   # no background given, chose randomly
-        list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '_']
+        list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '.'] # ignore hidden files
         if len(list_background_files) == 0:
             print("No background files available to choose from, background will remain unchanged.", file=sys.stderr)
             return  # do nothing if there is no file to use
