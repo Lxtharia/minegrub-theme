@@ -34,6 +34,8 @@
           '';
 
           buildPhase = optional customSplash ''
+            mkdir -p minegrub/backgrounds
+            cp background_options/*.png minegrub/backgrounds/
             echo "${splash}" > resources/splashes.txt
             python minegrub/update_theme.py
           '';
@@ -44,6 +46,10 @@
             cp *.png $out/grub/themes/minegrub
             cp *.pf2 $out/grub/themes/minegrub
             cp theme.txt $out/grub/themes/minegrub
+            cd ..
+            mkdir -p $out/grub/themes/minegrub/backgrounds
+            cd background_options
+            cp *.png $out/grub/themes/minegrub/backgrounds
           '';
         };
     in
