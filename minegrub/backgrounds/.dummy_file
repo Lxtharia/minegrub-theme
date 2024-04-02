@@ -1,0 +1,11 @@
+Add an arbitrary number of images to this directory if you want to
+use the update script and you want the background to be randomized.
+
+update_theme.py will randomly choose one non-hidden file (i.e.
+filename does not begin with a dot) and copy it to
+`../background.png.`
+
+This file is only necessary to force git to add the `backgrounds/`
+directory, as adding empty directories is not possible. You can
+delete this file in your local installation as long as you keep
+the `backgrounds/` directory.

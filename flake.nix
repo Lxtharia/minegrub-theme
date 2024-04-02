@@ -37,8 +37,7 @@
           '';
 
           buildPhase = optional customSplash ''
-            echo "${splash}" > resources/splashes.txt
-            python minegrub/update_theme.py
+            python minegrub/update_theme.py "${splash}"
           '';
 
           installPhase = ''
