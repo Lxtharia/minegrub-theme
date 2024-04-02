@@ -18,7 +18,7 @@
         (system: f nixpkgs.legacyPackages.${system});
 
       minegrub =
-        { pkgs, splash ? "", customSplash ? splash != "", ... }:
+        { pkgs, splash ? "", customSplash ? splash != "", boot-options-count, ... }:
         pkgs.stdenv.mkDerivation {
           name = "minegrub-theme";
           src = "${self}";
@@ -31,6 +31,9 @@
 
           patchPhase = ''
             sed -i '$d' minegrub/update_theme.py
+
+            top_value=$((170 + (${toString boot-options-count} - 2) * 72))
+            sed -i '/^+ image {/,/^}$/s/top = 40%+[0-9]\+/top = 40%+'"$top_value"'/' minegrub/theme.txt
           '';
 
           buildPhase = optional customSplash ''
@@ -55,6 +58,14 @@
         {
           options = {
             boot.loader.grub.minegrub-theme = {
+              boot-options-count = mkOption {
+                default = 4;
+                example = 4;
+                type = types.number;
+                description = ''
+                  Number of boot options.
+                '';
+              };
               splash = mkOption {
                 default = "deleting garbage...";
                 example = "Infinite recursion";
@@ -79,6 +90,7 @@
                 minegrub-theme = minegrub {
                   inherit pkgs;
                   splash = cfg.splash;
+                  boot-options-count = cfg.boot-options-count;
                 };
               in
               {

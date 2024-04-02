@@ -16,6 +16,9 @@ A Grub Theme in the style of Minecraft!
 git clone https://github.com/Lxtharia/minegrub-theme.git
 ```
 - (optional) Choose a background
+```
+./choose-background.sh  # or just copy a custom image to minegrub/background.png
+```
   - If you want to use the update script, copy an arbitrary number of images you would like to use to `minegrub/backgrounds/`. You can find some options in `background_options/` but you can also use your own images.
   - If you do not want to use the update script or if you always want to use the same background, you can use `./choose-background.sh` or just copy a custom image to `minegrub/background.png`
 
@@ -61,6 +64,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
     minegrub-theme = {
       enable = true;
       splash = "100% Flakes!";
+      boot-options-count = 4;
     };
     # ...
   };
