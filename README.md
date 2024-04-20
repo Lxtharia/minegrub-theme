@@ -86,7 +86,7 @@ The `update_theme.py` script chooses a random line from `assets/splashes.txt` an
     `sudo -H pip3 install pillow`
   - It's important to use `sudo -H`, because it needs to be available for the root user
 - To add new splash texts simply edit `./minegrub/assets/splashes.txt` and add them to the file.
-- Put all backgrounds you want to randomly choose from in `./minegrub/backgrounds/`. Filenames beginning with `_` will be ignored. You can also add your own images.
+- Put all backgrounds you want to randomly choose from in `./minegrub/backgrounds/`. Hidden files (i.e. filenames beginning with a dot) will be ignored. You can also add your own images.
 - If you want to get a specific splash and/or background for the next boot, run `python update_theme.py [BACKGROUND_FILE [SPLASH]]`, e.g. `python update_theme.py 'backgrounds/1.15 - [Buzzy Bees].png' 'Splashing!'`
   - Empty string parameters will be replaced by a random choice, e.g. `python update_theme.py '' 'Splashing!'` for a random background and the splash `Splashing!`.
 
