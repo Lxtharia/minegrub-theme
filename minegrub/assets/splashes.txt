@@ -1,50 +1,50 @@
-I use Arch BTW!
-Now with 100% more Linux!
-GNU's not UNIX!
-Praise Tux!
-Wine is not an Emulator!
-I am Root!
-Still stuck in Vim!
-Won't sell your data!
-Now with Rust!
-Full of Distros!
-Do redistribute!
-May contain penguins!
-Support FOSS devs!
-Bailing out!
-Everything is a file!
-May contain systemd...
-Open source!
-Made in Finland!
-It's not a bug, it's a feature!
-It's GNU/Linux!
-Sudo rm -rf!
-Yes, do as I say!
-90% bug free!
-Not water proof!
-Used by billions!
-12345 is a bad password!
-Turing complete!
-Woah.
-I have a suggestion.
-pls fix
-beep beep
-Boop!
-Splash!
-[Insert splash text here]
-Made by "real" people!
-Viruses have no power here!
-No place like ~
-Used in space!
-No reboots required!
-Case sensitive!
-.exe won't work here!
-No ads!
-May contain spaghetti...
-No registry needed!
-Forward slashes only!
-No DLLs needed!
+Yo uso Arch, por cierto!
+Ahora con 100% más Linux!
+GNU no es UNIX!
+Alabad a Tux!  
+Wine no es un Emulador!
+Yo soy Root!
+Todavía atascado en Vim!
+No vendas tus datos!
+Ahora con Rust!
+Lleno de Distros!
+Haz copias y redistribuye!
+Puede contener trazas de pingüinos!
+Apoya a los devs del Software Libre!
+Rescatado! 
+Aquí todo es un archivo!
+Puede contener trazas de systemd...
+100% Código Abierto!
+Hecho en Finlandia!
+No es un fallo, es una característica!
+Se dice GNU/Linux!
+sudo rm -rf   
+Sí, haz lo que digo!
+90% libre de errores!
+No es impermeable!
+Usado por miles de millones!
+12345 es una mala contraseña!
+Turing completado!  
+Guau!
+Tengo una sugerencia.
+Arreglar plz
+bip! bip!
+boop!
+Bienvenid@!
+[Inserta aquí tu texto de bienvenida]
+Hecho por gente "real"!
+Los virus no tienen poder aquí!
+Ningún lugar como ~
+Usado en el espacio!
+No requiere reinicios!
+Distingue mayúsculas y minúsculas!
+Los .exe no funcionan aquí!
+Sin anuncios!           
+Puede contener trazas de spagueti...
+No requiere registrarse!
+Sólo barras inclinadas hacia adelante!
+No requiere DLLs!
 127.0.0.1 > localhost :)
-No caffeine!
-Zero calories!
-Do not eat!
+Sin cafeína!
+Cero calorías!
+No ingerir!
