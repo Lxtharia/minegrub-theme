@@ -3,14 +3,14 @@
 title-text: ""
 desktop-image: "background.png"
 
-# Terminal para la Consola y Opciones
+# Terminal para la consola y las opciones
 terminal-border: "20"
 terminal-left: "10%"
 terminal-top: "10%+23"
 terminal-width: "80%"
 terminal-height: "80%"
 terminal-box: "term_*.png"
-terminal-font: "Monocraft Regular 22"
+terminal-font: "Monocraft Regular 21"
 
 # Texto Blanco 
 + boot_menu {
@@ -23,7 +23,7 @@ terminal-font: "Monocraft Regular 22"
 	width = 600
 	height = 500
 
-	item_font = "Minecraft Regular 30"
+	item_font = "Minecraft Regular 29"
 	item_color = "#ffffff"
 	selected_item_color = "#ffffa0"
 	item_height = 34
@@ -39,7 +39,7 @@ terminal-font: "Monocraft Regular 22"
 	width = 600
 	height = 500
 
-	item_font = "Minecraft Regular 30"
+	item_font = "Minecraft Regular 29"
 	item_color = "#383838"
 	selected_item_color = "#3f3f28"
 	item_height = 34
@@ -115,7 +115,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "647 Paquetes Instalados"
+	text = "1165 Paquetes Instalados"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
@@ -127,7 +127,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 54
 	width = 200
 
-	text = "647 Paquetes Instalados"
+	text = "1165 Paquetes Instalados"
 	font = "Minecraft Regular 30"
 	color = "#3f3f3f"
 }
