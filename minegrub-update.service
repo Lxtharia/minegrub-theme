@@ -1,5 +1,5 @@
 [Unit]
-Description=minegrub theme splash update service
+Description=servicio de actualizacion del tema minegrub para grub
 After=hibernate.target
 
 [Service]
