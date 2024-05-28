@@ -1,50 +1,50 @@
-Yo uso Arch, por cierto!
-Ahora con 100% más Linux!
-GNU no es UNIX!
-Alabad a Tux!  
-Wine no es un Emulador!
-Yo soy Root!
-Todavía atascado en Vim!
-No vendas tus datos!
-Ahora con Rust!
-Lleno de Distros!
-Haz copias y redistribuye!
-Puede contener trazas de pingüinos!
-Apoya a los devs del Software Libre!
-Rescatado! 
-Aquí todo es un archivo!
+¡Yo uso Arch, por cierto!
+¡Ahora con un 100% más de Linux!
+¡GNU no es UNIX!
+¡Alabad a Tux!  
+¡Wine no es un Emulador!
+¡Yo soy Root!
+¡Todavía atascado en Vim!
+¡No vendas tus datos!
+¡Ahora con Rust!
+¡Lleno de Distros!
+¡Haz copias y redistribuye!
+¡Puede contener trazas de pingüinos!
+¡Apoya a los desarrolladores de Software Libre!
+¡Rescatado! 
+¡Aquí todo es un archivo!
 Puede contener trazas de systemd...
-100% Código Abierto!
-Hecho en Finlandia!
-No es un fallo, es una característica!
-Se dice GNU/Linux!
+¡100% Código Abierto!
+¡Hecho en Finlandia!
+¡No es un fallo, es una característica!
+¡Se dice GNU/Linux!
 sudo rm -rf   
-Sí, haz lo que digo!
-90% libre de errores!
-No es impermeable!
-Usado por miles de millones!
-12345 es una mala contraseña!
-Turing completado!  
-Guau!
+¡Sí, haz lo que digo!
+¡90% libre de errores!
+¡No es impermeable!
+¡Usado por miles de millones!
+¡12345 es una mala contraseña!
+¡Turing completado!  
+¡Guau!
 Tengo una sugerencia.
 Arreglar plz
 bip! bip!
 boop!
-Bienvenid@!
+¡Bienvenid@!
 [Inserta aquí tu texto de bienvenida]
-Hecho por gente "real"!
-Los virus no tienen poder aquí!
+¡Hecho por gente "real"!
+¡Los virus no tienen poder aquí!
 Ningún lugar como ~
-Usado en el espacio!
-No requiere reinicios!
-Distingue mayúsculas y minúsculas!
-Los .exe no funcionan aquí!
-Sin anuncios!           
+¡Usado en el espacio!
+¡No requiere reinicios!
+¡Distingue mayúsculas y minúsculas!
+¡Los .exe no funcionan aquí!
+¡Sin anuncios!           
 Puede contener trazas de spagueti...
-No requiere registrarse!
-Sólo barras inclinadas hacia adelante!
-No requiere DLLs!
+¡No requiere registrarse!
+¡Sólo barras inclinadas hacia adelante!
+¡No requiere DLLs!
 127.0.0.1 > localhost :)
-Sin cafeína!
-Cero calorías!
-No ingerir!
+¡Sin cafeína!
+¡Cero calorías!
+¡No ingerir!
