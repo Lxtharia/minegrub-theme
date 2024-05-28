@@ -3,7 +3,7 @@
 title-text: ""
 desktop-image: "background.png"
 
-# Terminal for Console and Options
+# Terminal para la Consola y Opciones
 terminal-border: "20"
 terminal-left: "10%"
 terminal-top: "10%+23"
@@ -12,12 +12,12 @@ terminal-height: "80%"
 terminal-box: "term_*.png"
 terminal-font: "Monocraft Regular 22"
 
-# Text White 
+# Texto Blanco 
 + boot_menu {
-	# as we don't have any pixmaps here, it gets aligned strangely
-	# top pixmap is 17px in height 
-	# left pixmap is 6px in width 
-	# the text needs to be 3 pixels above and 3 pixels to the left
+	# como no tenemos ningún pixmap aquí, se alinea de forma extraña
+	# el pixmap superior tiene 17px de altura
+	# el pixmap izquierdo tiene 6px de ancho
+	# el texto tiene que estar 3 píxeles por encima y 3 píxeles a la izquierda
 	left = 50%-297 
 	top = 40%+14
 	width = 600
@@ -53,37 +53,38 @@ terminal-font: "Monocraft Regular 22"
 
 
 + image {
-	# width of the static bottom bar image is 744
+	# el ancho de la imagen estática de la parte de abajo es 744
 	left = 50%-372
 
-	# n is amount of boot options (each element is (42 height + 30 spacing) = 72px in height) 
+	# N es la cantidad de opciones de arranque (cada elemento es (42 alto + 30 separación) = 72px de altura)
 	# top = 40%+( 72 * N + 26 )
 	#
-	### +170 (for 2 boot options)
-	### +242 (for 3 boot options)
-	### +314 (for 4 boot options)
-	### +386 (for 5 boot options)
-	### +458 (for 6 boot options)
-	### +530 (for 7 boot options)
+	### +170 (para 2 opciones de arranque)
+	### +386 (para 3 opciones de arranque)
+	### +242 (para 4 opciones de arranque)
+	### +314 (para 5 opciones de arranque)
+	### +386 (para 6 opciones de arranque)
+	### +458 (para 7 opciones de arranque)
+	### +530 (para 8 opciones de arranque)
 	###
-	############### CHANGE VALUE HERE ################
+	############### CAMBIAR EL VALOR AQUÍ ################
 
 	top = 40%+314
 
-	### Don't leave spaces in between the value
+	### No poner espacios entre los valores a sumar
 	##################################################
 
 	file = "static_bar.png"
 }
 
 + image {
-	# width of the logo image is 1200, but the center of the logo is at x=400
+	# el ancho de la imagen del logo es 1200, pero el centro de la misma está en x=400
 	left = 50%-400
 	top = 0
 	file = "logo.png"	
 }
 
-# TEXT 
+# TEXTO 
 + label {	
 	left = 6
 	top = 100%-61
@@ -95,7 +96,7 @@ terminal-font: "Monocraft Regular 22"
 	color = "white"
 }
 
-# SHADOW 
+# SOMBRA 
 + label {
 	left = 9
 	top = 100%-58
@@ -107,31 +108,31 @@ terminal-font: "Monocraft Regular 22"
 	color = "#3f3f3f"
 }
 
-# TEXT
+# TEXTO
 + label {	
 	left = 6
 	top = 100%-31
 	height = 54
 	width = 200
 
-	text = "647 Packages Installed"
+	text = "647 Paquetes Instalados"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
 
-# SHADOW
+# SOMBRA
 + label {
 	left = 9
 	top = 100%-28
 	height = 54
 	width = 200
 
-	text = "647 Packages Installed"
+	text = "647 Paquetes Instalados"
 	font = "Minecraft Regular 30"
 	color = "#3f3f3f"
 }
 
-# TEXT 
+# TEXTO 
 + label {
 	id = "__timeout__"
 	
@@ -140,13 +141,13 @@ terminal-font: "Monocraft Regular 22"
 	height = 24
 	width = 50%-6	
 	
-	text = "Joining world in %d seconds"
+	text = "Uniéndose al mundo en %d segundos"
 	align = "right"
 	font = "Minecraft Regular 30"
 	color = "white"
 }
 
-# SHADOW 
+# SOMBRA 
 + label {
 	id = "__timeout__"
 
@@ -155,7 +156,7 @@ terminal-font: "Monocraft Regular 22"
 	height = 24
 	width = 50%-6
 
-	text = "Joining world in %d seconds"
+	text = "Uniéndose al mundo en %d segundos"
 	align = "right"
 	font = "Minecraft Regular 30"
 	color = "#3f3f3f"
