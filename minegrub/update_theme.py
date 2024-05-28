@@ -72,14 +72,14 @@ def update_package_count() -> None:
         ).stdout.decode().split()[-1]
     )
     path = Path(f"{themedir}/theme.txt")
-    text = "Packages Installed"
+    text = "Paquetes Instalados"
     old_lines = path.read_text().splitlines(keepends=False)
     new_line = f'\ttext = "{packages} {text}"'
     # Replace lines that have {text} to {new_line}
     for i, old_line in enumerate(old_lines):
         if text in old_line:
             patch(path, i, new_line)
-    print(f"Updated packages installed to {packages}.")
+    print(f"Actualizados los paquetes instalados a {packages}.")
 
 def patch(path: Path, linenum: int, new_line: str) -> None:
     lines = path.read_bytes().splitlines(keepends=True)
