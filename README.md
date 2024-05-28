@@ -3,6 +3,9 @@
 | *> Minecraft Main Menu <* | [Minecraft World Selection Menu](https://github.com/Lxtharia/minegrub-world-sel-theme) | [Using both themes together](https://github.com/Lxtharia/double-minegrub-menu) |
 | --- | --- | --- |
 
+There is also a [Spanish translation](https://github.com/FeRChImoNdE/minegrub-theme-es) now!
+
+
 # Minegrub
 A Grub Theme in the style of Minecraft!
 
