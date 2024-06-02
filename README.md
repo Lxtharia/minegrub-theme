@@ -59,7 +59,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
     nixosConfigurations.HOSTNAME = nixpkgs.lib.nixosSystem {
       modules = [
         ./configuration.nix
-        inputs.minegrub.nixosModules.default
+        inputs.minegrub-theme.nixosModules.default
       ];
     };
   }
