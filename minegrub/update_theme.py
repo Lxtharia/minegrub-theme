@@ -65,21 +65,37 @@ def cache_file_name(splash_text: str) -> str:
     return f"{cachedir}/{h.hexdigest()}.png"
 
 def update_package_count() -> None:
-    packages: int = int(
-        subprocess.run(
-            ["neofetch", "packages", "--package_managers", "off"],
-            stdout=subprocess.PIPE,
-        ).stdout.decode().split()[-1]
-    )
+    output = subprocess.run(
+        ["fastfetch"],
+        stdout=subprocess.PIPE,
+    ).stdout.decode()
+
+    # Extract the number of packages from the output
+    packages_line = next(line for line in output.split('\n') if 'Packages' in line)
+    _, num_packages_str = packages_line.split(':')
+    # Split the string into parts based on spaces
+    num_packages_parts = num_packages_str.split()
+
+    # Initialize total packages count
+    total_packages = 0
+
+    # Iterate over the parts and add up the numbers
+    for part in num_packages_parts:
+        # Check if the part is a number
+        if part.isdigit():
+            total_packages += int(part)
+
     path = Path(f"{themedir}/theme.txt")
     text = "Packages Installed"
     old_lines = path.read_text().splitlines(keepends=False)
-    new_line = f'\ttext = "{packages} {text}"'
+    new_line = f'\ttext = "{total_packages} {text}"'
+
     # Replace lines that have {text} to {new_line}
     for i, old_line in enumerate(old_lines):
         if text in old_line:
             patch(path, i, new_line)
-    print(f"Updated packages installed to {packages}.")
+
+    print(f"Updated packages installed to {total_packages}.")
 
 def patch(path: Path, linenum: int, new_line: str) -> None:
     lines = path.read_bytes().splitlines(keepends=True)

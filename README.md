@@ -88,7 +88,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Random splash texts and accurate "x Packages Installed" text!
 The `update_theme.py` script chooses a random line from `assets/splashes.txt` and generates and replaces the `logo.png` which holds the splash text, as well as updates the amount of packages currently installed. It also randomly chooses a file from `backgrounds/` (ignoring hidden files beginning with a dot) as the background image.
-- Make sure `neofetch` is installed
+- Make sure `fastfetch` is installed
 - Make sure Python 3 (or an equivalent) and the Pillow python package are installed
   - Install Pillow either with the python-pillow package from the AUR or with
     `sudo -H pip3 install pillow`
