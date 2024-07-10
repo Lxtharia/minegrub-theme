@@ -64,11 +64,22 @@ def cache_file_name(splash_text: str) -> str:
     h.update(splash_text.encode())
     return f"{cachedir}/{h.hexdigest()}.png"
 
+def get_output(command):
+    # Run the command and get its output
+    result = subprocess.run(command, stdout=subprocess.PIPE)
+    return result.stdout.decode()
+
 def update_package_count() -> None:
-    output = subprocess.run(
-        ["fastfetch"],
-        stdout=subprocess.PIPE,
-    ).stdout.decode()
+    # Try running Fastfetch, Hyfetch, and Neofetch in order
+    for command in [["fastfetch"], ["neofetch"]]:
+        try:
+            output = get_output(command)
+            break
+        except FileNotFoundError:
+            continue
+    else:
+        print("Error: Neither Fastfetch or Neofetch are available. Package count not updated.")
+        return
 
     # Extract the number of packages from the output
     packages_line = next(line for line in output.split('\n') if 'Packages' in line)
