@@ -35,7 +35,7 @@ git clone https://github.com/Lxtharia/minegrub-theme.git
 cd ./minegrub-theme
 sudo cp -ruv ./minegrub /boot/grub/themes/
 ```
-- Change/add this line in your `/etc/default/grub`:
+- Open `/etc/default/grub` with your text editor and change/uncommon this line:
 ```
 GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
 ```
