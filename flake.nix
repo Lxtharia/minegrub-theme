@@ -23,11 +23,9 @@
           name = "minegrub-theme";
           src = "${self}";
 
-          buildInputs = optional customSplash
-            [
-              (pkgs.python3.withPackages
-                (p: [ p.pillow ]))
-            ];
+          buildInputs = optional customSplash [
+            (pkgs.python3.withPackages (p: [ p.pillow ]))
+          ];
 
           patchPhase = ''
             sed -i '$d' minegrub/update_theme.py
@@ -48,14 +46,12 @@
             cp theme.txt $out/grub/themes/minegrub
           '';
         };
-    in
-    {
+    in {
       nixosModules.default = { config, pkgs, ... }:
         let
           cfg = config.boot.loader.grub.minegrub-theme;
           inherit (nixpkgs.lib) mkOption types mkIf;
-        in
-        {
+        in {
           options = {
             boot.loader.grub.minegrub-theme = {
               boot-options-count = mkOption {
@@ -85,27 +81,25 @@
             };
           };
           config = mkIf cfg.enable {
-            boot.loader.grub =
-              let
-                minegrub-theme = minegrub {
-                  inherit pkgs;
-                  splash = cfg.splash;
-                  boot-options-count = cfg.boot-options-count;
-                };
-              in
-              {
-                theme = "${minegrub-theme}/grub/themes/minegrub";
-                splashImage = "${minegrub-theme}/grub/themes/minegrub/background.png";
+            boot.loader.grub = let
+              minegrub-theme = minegrub {
+                inherit pkgs;
+                splash = cfg.splash;
+                boot-options-count = cfg.boot-options-count;
               };
+            in {
+              theme = "${minegrub-theme}/grub/themes/minegrub";
+              splashImage = "${minegrub-theme}/grub/themes/minegrub/background.png";
+            };
           };
         };
 
-      packages = eachSystem
-        (pkgs: {
-          default = minegrub {
-            inherit pkgs;
-            # splash = "custom splash text";
-          };
-        });
+      packages = eachSystem (pkgs: {
+        default = minegrub {
+          inherit pkgs;
+          # splash = "custom splash text";
+        };
+      });
     };
 }
+
