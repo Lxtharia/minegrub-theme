@@ -71,7 +71,7 @@ def get_output(command):
 
 def update_package_count() -> None:
     # Run Fastfetch and Neofetch in order
-    for command in [["fastfetch"], ["neofetch"]]:
+    for command in [["fastfetch", "-c", "neofetch"], ["neofetch"]]:
         try:
             output = get_output(command)
             break
