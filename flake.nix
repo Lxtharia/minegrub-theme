@@ -18,7 +18,7 @@
         (system: f nixpkgs.legacyPackages.${system});
 
       minegrub =
-        { pkgs, splash ? "", customSplash ? splash != "", boot-options-count, ... }:
+        { pkgs, splash ? "", background ? "", customSplash ? splash != "", boot-options-count, ... }:
         pkgs.stdenv.mkDerivation {
           name = "minegrub-theme";
           src = "${self}";
@@ -37,7 +37,7 @@
           '';
 
           buildPhase = optional customSplash ''
-            python minegrub/update_theme.py "${splash}"
+            python minegrub/update_theme.py "${background}" "${splash}"
           '';
 
           installPhase = ''
@@ -74,6 +74,14 @@
                   Splash text on logo.
                 '';
               };
+              background = mkOption {
+                default = "background_options/1.8  - [Classic Minecraft].png";
+                example = "/path/to/background.png";
+                type = types.str;
+                description = ''
+                  Path to background image.
+                '';
+              };
               enable = mkOption {
                 default = false;
                 example = true;
@@ -90,6 +98,7 @@
                 minegrub-theme = minegrub {
                   inherit pkgs;
                   splash = cfg.splash;
+                  background = cfg.background;
                   boot-options-count = cfg.boot-options-count;
                 };
               in
