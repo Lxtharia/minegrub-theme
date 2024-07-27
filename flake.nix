@@ -25,6 +25,7 @@
 
           buildInputs = optional customSplash
             [
+              fastfetch
               (pkgs.python3.withPackages
                 (p: [ p.pillow ]))
             ];
