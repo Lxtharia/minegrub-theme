@@ -23,10 +23,10 @@
           name = "minegrub-theme";
           src = "${self}";
 
-          buildInputs = optional customSplash
+          buildInputs = with pkgs; optional customSplash
             [
               fastfetch
-              (pkgs.python3.withPackages
+              (python3.withPackages
                 (p: [ p.pillow ]))
             ];
 
