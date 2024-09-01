@@ -72,7 +72,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
     minegrub-theme = {
       enable = true;
       splash = "100% Flakes!";
-      background = "background_options/1.8  - [Classic Minecraft]";
+      background = "background_options/1.8  - [Classic Minecraft].png";
       boot-options-count = 4;
     };
     # ...
