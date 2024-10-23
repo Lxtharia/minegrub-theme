@@ -139,10 +139,10 @@ sudo update-rc.d minecraft-grub defaults
 
 ## Setting the console background
 
-You can open the grub console by pressing 'C'.
-To set a background, you could specify `GRUB_BACKGROUND=<path>` in `/etc/defaults/grub`
+When in grub, pressing 'c' opens the grub console.
+If you want that console to have a background you can specify `GRUB_BACKGROUND=<path>` in `/etc/defaults/grub`
 
-This doesn't work if a theme is set though, so you first need to change a line in a grub file.
+**Though this doesn't work if a theme is set**, so you first need to change a line in a grub file.
 This can be done by applying the provided patch:
 ```bash
 # cd into the cloned repository, then run
@@ -152,7 +152,7 @@ Now you can set
 ```
 GRUB_BACKGROUND="/boot/grub/themes/minegrub/dirt.png"
 ```
-and don't forget to regenerate the `grub.cfg` :)
+And don't forget to regenerate the `grub.cfg` :)
 
 
 # Notes:
