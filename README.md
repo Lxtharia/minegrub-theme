@@ -19,7 +19,7 @@ A Grub Theme in the style of Minecraft!
 > - If you have a `/boot/grub2` folder instead of a `/boot/grub` folder , you need to adjust the file paths mentioned here and in the `minegrub-update.service` file
 > - Also if you're not sure, run `grub-mkconfig -V` to check if you have grub version 2 (you should have)
 
-### Manually
+## Manually
 
 - Clone this repository
 ```
@@ -48,9 +48,17 @@ GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
 - You're good to go!
 - Check out the `Configuration` section if you want to auto-update the splash text, the background and the packages display after every boot
 
+## Using the installation script
+- Run the installation script as root and at your own risk (It's run as sudo after all)
+```
+sudo ./install_theme.sh
+```
+- This will help you to install the theme, the systemd service and apply the patch
+- It also lets you choose a background if you don't want to randomize it
+
 ---
 
-### NixOS module (flake)
+## NixOS module (flake)
 
 <details><summary>This is a minimal example</summary>
 
