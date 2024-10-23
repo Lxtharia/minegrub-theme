@@ -7,12 +7,14 @@ There is also a [Spanish translation](https://github.com/FeRChImoNdE/minegrub-th
 
 
 # Minegrub
+
 A Grub Theme in the style of Minecraft!
 
 
 ![Minegrub Preview "Screenshot"](resources/preview_minegrub.png)
 
 # Installation
+
 > ### Note: grub vs grub2
 > - If you have a `/boot/grub2` folder instead of a `/boot/grub` folder , you need to adjust the file paths mentioned here and in the `minegrub-update.service` file
 > - Also if you're not sure, run `grub-mkconfig -V` to check if you have grub version 2 (you should have)
@@ -30,12 +32,12 @@ git clone https://github.com/Lxtharia/minegrub-theme.git
   - If you want to use the update script, copy an arbitrary number of images you would like to use to `minegrub/backgrounds/`. You can find some options in `background_options/` but you can also use your own images.
   - If you do not want to use the update script or if you always want to use the same background, you can use `./choose-background.sh` or just copy a custom image to `minegrub/background.png`
 
-- Copy the folder to your boot partition: (for info: `-ruv` = recursive, update, verbose)
+- Copy the folder to your boot partition: (for your interest: `-ruv` = recursive, update, verbose)
 ```
 cd ./minegrub-theme
 sudo cp -ruv ./minegrub /boot/grub/themes/
 ```
-- Open `/etc/default/grub` with your text editor and change/uncommon this line:
+- Open `/etc/default/grub` with your text editor and change/uncomment this line:
 ```
 GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
 ```
@@ -44,6 +46,7 @@ GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 - You're good to go!
+- Check out the `Configuration` section if you want to auto-update the splash text, the background and the packages display after every boot
 
 ### NixOS module (flake)
 
@@ -84,10 +87,13 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Configuration
 
 ## Adjusting for a different amount of boot options:
-- When you have more/less than 4 boot options, you might want to adjust the height of the bottom bar (that says "Options" and "Console")
+
+- If you have more or less than 4 boot options, the buttons will overlap with the bottom bar (the one saying "Options" and "Console")
+- To fix this, all you need to do is edit the `/boot/grub/themes/minegrub/theme.txt`
 - The formula and some precalculated values (for 2,3,4,5... boot options) are in the `theme.txt`, so you should be able to easily change it to the correct value.
 
-## Random splash texts and accurate "x Packages Installed" text!
+## Updating splash text, background and "x Packages Installed" text after every boot!
+
 The `update_theme.py` script chooses a random line from `assets/splashes.txt` and generates and replaces the `logo.png` which holds the splash text, as well as updates the amount of packages currently installed. It also randomly chooses a file from `backgrounds/` (ignoring hidden files beginning with a dot) as the background image.
 - Make sure `fastfetch` or `neofetch` is installed
 - Make sure Python 3 (or an equivalent) and the Pillow python package are installed
@@ -100,10 +106,13 @@ The `update_theme.py` script chooses a random line from `assets/splashes.txt` an
   - Empty string parameters will be replaced by a random choice, e.g. `python update_theme.py '' 'Splashing!'` for a random background and the splash `Splashing!`.
 
 ### Update splash and "Packages Installed"...
+
 #### ...manually
+
 - Just run `python /boot/grub/themes/minegrub/update_theme.py` (from anywhere) after boot using whatever method works for you
 
 #### ...with init-d (SysVinit)
+
 - Just copy the `./minegrub-SysVinit.sh` under `/etc/init.d` as `minecraft-grub` then run `update-rc.d minecraft-grub defaults` as root privileges:
 ```bash
 sudo cp -v "./minegrub-SysVinit.sh" "/etc/init.d/minecraft-grub"
@@ -112,18 +121,39 @@ sudo update-rc.d minecraft-grub defaults
 ```
 
 #### ...with systemd
+
 - Edit `./minegrub-update.service` to use `/boot/grub2/` on line 5 if applicable
 - Copy `./minegrub-update.service` to `/etc/systemd/system`
 - Enable the service: `systemctl enable minegrub-update.service`
 - If it's not updating after rebooting (it won't update on the first reboot because it updates after you boot into your system), check `systemctl status minegrub-update.service` for any errors (for example if pillow isn't installed in the correct scope)
 
+## Setting the console background
+
+You can open the grub console by pressing 'C'.
+To set a background, you could specify `GRUB_BACKGROUND=<path>` in `/etc/defaults/grub`
+
+This doesn't work if a theme is set though, so you first need to change a line in a grub file.
+This can be done by applying the provided patch:
+```bash
+# cd into the cloned repository, then run
+sudo patch /etc/grub.d/00_header grub_background.patch
+```
+Now you can set 
+```
+GRUB_BACKGROUND="/boot/grub/themes/minegrub/dirt.png"
+```
+and don't forget to regenerate the `grub.cfg` :)
+
+
 # Notes:
+
 - the `GRUB_TIMEOUT_STYLE` in the defaults/grub file should be set to `menu`, so it immediately shows the menu (else you would need to press ESC and you dont want that)
 - I'm no Linux expert, that's why I explain it so thoroughly, for other newbies :>
 - i use arch btw
 - i hope u like it, cause i sure do lmao
 
 ### Thanks to
+
 - https://github.com/toboot for giving me this wonderful idea!
 - the internet for giving me wisdom lmao (Mainly http://wiki.rosalab.ru/en/index.php/Grub2_theme_tutorial)
 - The contributors for contributing and giving me some motivation to improve some little things here and there
