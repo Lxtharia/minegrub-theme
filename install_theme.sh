@@ -55,12 +55,15 @@ fi
 
 
 echo
-read -p "[?] Do you want to apply a patch so setting GRUB_BACKGROUND will set a background for the grub console? [y/N] " -en 1 skip_patch
+read -p "[?] Do you want a grub drop-in-config file to be edited so setting GRUB_BACKGROUND will set a background for the grub console? [y/N] " -en 1 skip_patch
 if [[ "$skip_patch" =~ y|Y ]]; then
-    echo "[INFO] Patching grub configuration file..."
-    patch -N /etc/grub.d/00_header ./grub_background.patch
+    echo "[INFO] Editing /etc/grub.d/00_header"
+    # Backing up that file, just in case
+    cp --no-clobber /etc/grub.d/00_header ./00_header.bak
+    # sed'ing that one line
+    sed --in-place -E 's/(.*)elif(.*"x\$GRUB_BACKGROUND" != x ] && [ -f "\$GRUB_BACKGROUND" ].*)/\1fi; if\2/' /etc/grub.d/00_header
 else
-    echo "[INFO] [Skipping] Patching grub configuration file"
+    echo "[INFO] [Skipping] Editing grub drop-in-config file"
 fi
 
 

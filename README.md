@@ -53,7 +53,7 @@ GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
 ```
 sudo ./install_theme.sh
 ```
-- This will help you to install the theme, the systemd service and apply the patch
+- This will help you to install the theme, the systemd service and enable the console background
 - It also lets you choose a background if you don't want to randomize it
 
 ---
@@ -143,10 +143,12 @@ When in grub, pressing 'c' opens the grub console.
 If you want that console to have a background you can specify `GRUB_BACKGROUND=<path>` in `/etc/defaults/grub`
 
 **Though this doesn't work if a theme is set**, so you first need to change a line in a grub file.
-This can be done by applying the provided patch:
+This can be done by running this pretty looking sed command:
 ```bash
-# cd into the cloned repository, then run
-sudo patch /etc/grub.d/00_header grub_background.patch
+# Create a backup of the file first
+cp /etc/grub.d/00_header ./00_header.bak
+# replace the elif in that line with an fi; if
+sed --in-place -E 's/(.*)elif(.*"x\$GRUB_BACKGROUND" != x ] && [ -f "\$GRUB_BACKGROUND" ].*)/\1fi; if\2/' /etc/grub.d/00_header
 ```
 Now you can set 
 ```
