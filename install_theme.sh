@@ -22,29 +22,56 @@ else
 fi
 theme_path="$grub_path/themes/minegrub"
 
+## Prompts
+
 # Choosing a background, comment this out if it's annoying
-echo "First, lets choose a background, press Enter to skip this step."
-$SCRIPT_DIR/choose_background.sh
-
-# copy recursive, update, verbose
-echo "=> Copying the theme to $theme_path"
-cd $SCRIPT_DIR && cp -ruv ./minegrub $grub_path/themes/ | sed '/skipped/d'
-
-if [ -d /etc/systemd/system/ ]    ; then
-	echo -ne "=> Installing systemd service to update splash and package labels on boot\n\t"
-	cp -uv $SCRIPT_DIR/minegrub-update.service /etc/systemd/system/
-	systemctl enable minegrub-update.service
-	echo -e "\tDone."
-fi
-
-if [ -d /etc/init.d/ ]    ; then
-	echo -ne "=> Installing init.d service to update splash and package labels on boot\n\t"
-	cp -uv $SCRIPT_DIR/minegrub-SysVinit.sh /etc/init.d/minecraft-grub
-	update-rc.d minecraft-grub defaults
-	echo -e "\tDone."
+read -p "[?] Do you want to choose a specific background? [y/N] " -en 1 choose_bg 
+if [[ "$choose_bg" =~ y|Y ]]; then
+    echo "[INFO] Choosing a background from ./background_options/"
+    $SCRIPT_DIR/choose_background.sh
+else
+    echo "[INFO] [Skipping] Choosing a background"
 fi
 
 echo
-echo "== Done! Make sure to add/change this line in /etc/default/grub :"
-echo -e "\tGRUB_THEME=$theme_path/theme.txt"
+read -p "[?] Copy/Update the theme to '$theme_path'? [Y/n] " -en 1 copy_theme
+if [[ "$copy_theme" =~ y|Y || -z "$copy_theme" ]]; then
+    echo "[INFO] => Copying the theme files to boot partition:"
+    # copy recursive, update, verbose
+    cd $SCRIPT_DIR && cp -ruv ./minegrub $grub_path/themes/ | awk '$0 !~ /skipped/ { print "\t"$0 }'
+else
+    echo "[INFO] [Skipping] Copying the theme files to boot partition"
+fi
+
+
+echo 
+read -p "[?] Do you want to install a systemd service to automatically update the splash texts and backgrounds after every boot? [y/N] " -en 1 skip_service_installation
+if [[ "$skip_service_installation" =~ y|Y ]]; then
+    echo -ne "[INFO] Installing systemd service to update splash and package labels on boot\n\t"
+    cp -uv $SCRIPT_DIR/minegrub-update.service /etc/systemd/system/
+else
+    echo "[INFO] [Skipping] Systemd service installation"
+fi
+
+
+echo
+read -p "[?] Do you want to apply a patch so setting GRUB_BACKGROUND will set a background for the grub console? [y/N] " -en 1 skip_patch
+if [[ "$skip_patch" =~ y|Y ]]; then
+    echo "[INFO] Patching grub configuration file..."
+    patch -N /etc/grub.d/00_header ./grub_background.patch
+else
+    echo "[INFO] [Skipping] Patching grub configuration file"
+fi
+
+
+echo
+echo "======= Done! ======="
+echo "[YEAH] Make sure to add/change this line in /etc/default/grub :"
+echo
+echo -e "    GRUB_THEME=$theme_path/theme.txt"
+echo
+echo "[YEAH] And optionally this line. This won't have any effect unless you have applied the patch"
+echo
+echo -e "    GRUB_BACKGROUND=$theme_path/dirt.png"
+echo
 
