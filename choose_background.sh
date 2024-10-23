@@ -1,7 +1,8 @@
-#!/bin/bash 
+#!/bin/bash
 
 SCRIPT_DIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-cd $SCRIPT_DIR/backgrounds
+
+cd "$SCRIPT_DIR/background_options/" || exit 1
 
 # I hate bash arrays and for loops with ls
 SAVEIFS=$IFS
@@ -26,14 +27,14 @@ read chosen_ind
 
 if ! [[ "$chosen_ind" =~ ^[0-9]+$ ]] ; then 
 	echo "Not changing background" 
-	exit
-fi 
+	exit 1
+fi
 
 chosen_backgound=${backgrounds[$chosen_ind]}
 echo "Chose option $chosen_ind:  $chosen_backgound"
 
 if [[ "$chosen_backgound" == "" ]]; then
 	echo Not changing background.
-else 
-	cp "$chosen_backgound" $SCRIPT_DIR/minegrub/background.png
-fi 
+else
+	cp "$chosen_backgound" "$SCRIPT_DIR/minegrub/background.png"
+fi
