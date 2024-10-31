@@ -99,7 +99,8 @@ sudo ./install_theme.sh
 ## Adjusting for a different amount of boot options:
 
 - If you have more or less than 4 boot options, the buttons will overlap with the bottom bar (the one saying "Options" and "Console")
-- To fix this, all you need to do is edit the `/boot/grub/themes/minegrub/theme.txt`
+- To move that bar down and fix this, all you need to do is edit [this line](https://github.com/Lxtharia/minegrub-theme/blob/main/minegrub/theme.txt#L71) in the theme.txt: `/boot/grub/themes/minegrub/theme.txt`
+  - (You can also edit the file in the cloned repository so you don't overwrite it again when you update the theme at some point (via a `cp -r`))
 - The formula and some precalculated values (for 2,3,4,5... boot options) are in the `theme.txt`, so you should be able to easily change it to the correct value.
 
 ## Updating splash text, background and "x Packages Installed" text after every boot!
