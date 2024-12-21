@@ -3,8 +3,13 @@
 | *> Minecraft Main Menu <* | [Minecraft World Selection Menu](https://github.com/Lxtharia/minegrub-world-sel-theme) | [Using both themes together](https://github.com/Lxtharia/double-minegrub-menu) |
 | --- | --- | --- |
 
-There is also a [Spanish translation](https://github.com/FeRChImoNdE/minegrub-theme-es) now!
 
+**Also check out these other projects:**
+| [Minecraft SDDM Theme](https://github.com/Davi-S/sddm-theme-minesddm) | [Minecraft Plymouth Theme](https://github.com/nikp123/minecraft-plymouth-theme) |
+| --- | --- |
+
+
+There is also a [Spanish translation](https://github.com/FeRChImoNdE/minegrub-theme-es)!
 
 # Minegrub
 
