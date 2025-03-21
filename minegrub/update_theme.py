@@ -22,11 +22,12 @@ def update_splash(slogan: str) -> None:
         if os.path.isfile(splash_file):
             return use_logo(splash_text, splash_file)
     font = ImageFont.truetype(f"{assetdir}/MinecraftRegular-Bmg3.otf", font_size)
-    img = Image.open(f"{assetdir}/logo_clear.png")
-    original_size = img.size
+    logo_img = Image.open(f"{assetdir}/logo_clear.png")
+    original_size = logo_img.size
+    txt_img = Image.new(mode="RGBA", size=original_size, color=(0, 0, 0, 0))
     # Rotate image before drawing text
-    img = img.rotate(360 - angle, expand=True)
-    d = ImageDraw.Draw(img)
+    txt_img = txt_img.rotate(360 - angle, expand=True)
+    d = ImageDraw.Draw(txt_img)
     # Draw text and shadow
     if text_shadow:
         d.text(
@@ -38,15 +39,15 @@ def update_splash(slogan: str) -> None:
         )
     d.text(text_coords, splash_text, fill=text_color, anchor="ms", font=font)
     # Rotate image back to original angle
-    img = img.rotate(angle, expand=True)
+    txt_img = txt_img.rotate(angle, expand=True)
     # Mathy stuff (crop image back to original size)
     coordinates = (
-        (img.size[0] - original_size[0]) / 2,
-        (img.size[1] - original_size[1]) / 2,
-        (img.size[0] + original_size[0]) / 2,
-        (img.size[1] + original_size[1]) / 2,
+        (txt_img.size[0] - original_size[0]) / 2,
+        (txt_img.size[1] - original_size[1]) / 2,
+        (txt_img.size[0] + original_size[0]) / 2,
+        (txt_img.size[1] + original_size[1]) / 2,
     )
-    new = img.crop(coordinates)
+    new = Image.alpha_composite(logo_img, txt_img.crop(coordinates))
     # no cache here if you want what you like
     if slogan:
         print(f"Using splash from CLI: '{splash_text}'.")
