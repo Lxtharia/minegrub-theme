@@ -38,7 +38,9 @@ read -p "[?] Copy/Update the theme to '$theme_path'? [Y/n] " -en 1 copy_theme
 if [[ "$copy_theme" =~ y|Y || -z "$copy_theme" ]]; then
     echo "[INFO] => Copying the theme files to boot partition:"
     # copy recursive, update, verbose
-    cd $SCRIPT_DIR && cp -ruv ./minegrub $grub_path/themes/ | awk '$0 !~ /skipped/ { print "\t"$0 }'
+    cd $SCRIPT_DIR
+	mkdir -p $grub_path/themes/minegrub
+	cp -ruv ./minegrub $grub_path/themes/ | awk '$0 !~ /skipped/ { print "\t"$0 }'
 else
     echo "[INFO] [Skipping] Copying the theme files to boot partition"
 fi
