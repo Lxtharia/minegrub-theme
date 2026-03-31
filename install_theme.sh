@@ -53,6 +53,16 @@ else
     echo "[INFO] [Skipping] Systemd service installation"
 fi
 
+echo
+echo "[INFO] Ignore this if you do not have OpenRC installed (if you don't know what this means, choose No)"
+read -p "[?] Do you want to install an OpenRC service to automatically update the splash texts and backgrounds after every boot? [y/N] " -en 1 skip_openrc_service_installation
+if [[ "$skip_openrc_service_installation" =~ y|Y ]]; then
+    echo -ne "[INFO] Installing openrc service to update splash and package labels on boot\n\t"
+    cp -uv $SCRIPT_DIR/minegrub-update /etc/init.d/
+    rc-update add minegrub-update
+else
+    echo "[INFO] [Skipping] OpenRC service installation"
+fi
 
 echo
 read -p "[?] Do you want a grub drop-in-config file to be edited so setting GRUB_BACKGROUND will set a background for the grub console? [y/N] " -en 1 skip_patch
