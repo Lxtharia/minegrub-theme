@@ -75,7 +75,7 @@ case "$INIT_SYS" in
         read -p "[?] Do you want to install an OpenRC service to automatically update the splash texts and backgrounds after every boot? [y/N] " -en 1 skip_openrc_service_installation
         if [[ "$skip_openrc_service_installation" =~ y|Y ]]; then
             echo -ne "[INFO] Installing openrc service to update splash and package labels on boot\n\t"
-            cp -uv $SCRIPT_DIR/minegrub-update /etc/init.d/
+            cp -uv $SCRIPT_DIR/minegrub-update.openrc /etc/init.d/minegrub-update
             rc-update add minegrub-update
         else
             echo "[INFO] [Skipping] OpenRC service installation"
