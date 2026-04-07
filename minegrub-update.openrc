@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+description="minegrub theme splash update service"
+
+depend()
+{
+	need localmount
+	after hibernate
+}
+
+start()
+{
+	ebegin "${description}"
+	/usr/bin/python3 /boot/grub/themes/minegrub/update_theme.py
+	eend $?
+}

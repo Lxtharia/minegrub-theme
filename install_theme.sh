@@ -43,16 +43,48 @@ else
     echo "[INFO] [Skipping] Copying the theme files to boot partition"
 fi
 
+set_initsys () {
+    if [[ "$INIT_SYS" = null ]]; then 
+        INIT_SYS="$1"
+    else
+        echo "[ERROR] Multiple init services detected! Changing init system to unknown"
+    fi
+}
 
-echo 
-read -p "[?] Do you want to install a systemd service to automatically update the splash texts and backgrounds after every boot? [y/N] " -en 1 skip_service_installation
-if [[ "$skip_service_installation" =~ y|Y ]]; then
-    echo -ne "[INFO] Installing systemd service to update splash and package labels on boot\n\t"
-    cp -uv $SCRIPT_DIR/minegrub-update.service /etc/systemd/system/
-else
-    echo "[INFO] [Skipping] Systemd service installation"
+INIT_SYS=null
+if systemctl --version >/dev/null 2>&1 ; then
+    set_initsys systemd
+fi
+if openrc --version >/dev/null 2>&1; then
+    set_initsys openrc
 fi
 
+case "$INIT_SYS" in
+    systemd)
+        echo
+        read -p "[?] Do you want to install a systemd service to automatically update the splash texts and backgrounds after every boot? [y/N] " -en 1 skip_service_installation
+        if [[ "$skip_service_installation" =~ y|Y ]]; then
+            echo -ne "[INFO] Installing systemd service to update splash and package labels on boot\n\t"
+            cp -uv $SCRIPT_DIR/minegrub-update.service /etc/systemd/system/
+        else
+            echo "[INFO] [Skipping] Systemd service installation"
+        fi
+    ;;
+    openrc)
+        echo
+        read -p "[?] Do you want to install an OpenRC service to automatically update the splash texts and backgrounds after every boot? [y/N] " -en 1 skip_openrc_service_installation
+        if [[ "$skip_openrc_service_installation" =~ y|Y ]]; then
+            echo -ne "[INFO] Installing openrc service to update splash and package labels on boot\n\t"
+            cp -uv $SCRIPT_DIR/minegrub-update.openrc /etc/init.d/minegrub-update
+            rc-update add minegrub-update
+        else
+            echo "[INFO] [Skipping] OpenRC service installation"
+        fi
+    ;;
+    *)
+        echo "[INFO] No supported init found. Only systemd and openrc are supported for now."
+    ;;
+esac
 
 echo
 read -p "[?] Do you want a grub drop-in-config file to be edited so setting GRUB_BACKGROUND will set a background for the grub console? [y/N] " -en 1 skip_patch
