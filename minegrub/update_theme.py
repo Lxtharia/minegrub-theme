@@ -85,6 +85,8 @@ def update_package_count() -> None:
 
     # Extract the number of packages from the output
     packages_line = next(line for line in output.split('\n') if 'Packages' in line)
+    # Remove prefix ASCII art
+    packages_line = packages_line[packages_line.find('Packages'):]
     _, num_packages_str = packages_line.split(':')
     # Split the string into parts based on spaces
     num_packages_parts = num_packages_str.split()
