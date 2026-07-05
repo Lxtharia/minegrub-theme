@@ -28,6 +28,7 @@ A Grub Theme in the style of Minecraft!
 - Clone this repository
 ```
 git clone https://github.com/Lxtharia/minegrub-theme.git
+cd ./minegrub-theme
 ```
 - (optional) Choose a background
 ```
@@ -38,7 +39,6 @@ git clone https://github.com/Lxtharia/minegrub-theme.git
 
 - Copy the folder to your boot partition: (for your interest: `-ruv` = recursive, update, verbose)
 ```
-cd ./minegrub-theme
 sudo cp -ruv ./minegrub /boot/grub/themes/
 ```
 - Open `/etc/default/grub` with your text editor and change/uncomment this line:
