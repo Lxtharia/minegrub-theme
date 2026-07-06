@@ -7,7 +7,7 @@
 
   outputs = { self, nixpkgs }:
     let
-      inherit (nixpkgs.lib) genAttrs optional;
+      inherit (nixpkgs.lib) genAttrs optionals optionalString;
       eachSystem = f: genAttrs
         [
           "aarch64-darwin"
@@ -23,12 +23,10 @@
           name = "minegrub-theme";
           src = "${self}";
 
-          buildInputs = with pkgs; optional customSplash
-            [
-              fastfetch
-              (python3.withPackages
-                (p: [ p.pillow ]))
-            ];
+          buildInputs = with pkgs; optionals customSplash [
+            fastfetch
+            (python3.withPackages (p: [ p.pillow ]))
+          ];
 
           patchPhase = ''
             sed -i '$d' minegrub/update_theme.py
@@ -37,7 +35,7 @@
             sed -i '/^+ image {/,/^}$/s/top = 40%+[0-9]\+/top = 40%+'"$top_value"'/' minegrub/theme.txt
           '';
 
-          buildPhase = optional customSplash ''
+          buildPhase = optionalString customSplash ''
             python minegrub/update_theme.py "${background}" "${splash}"
           '';
 
