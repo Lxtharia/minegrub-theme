@@ -48,7 +48,6 @@ cd ./minegrub-theme
 - Copy the folder to your boot partition: (for your interest: `-ruv` = recursive, update, verbose)
 ```
 sudo cp -ruv ./minegrub /boot/grub/themes/
-sudo cp -ruv ./button_options /boot/grub/themes/minegrub/
 ```
 - Open `/etc/default/grub` with your text editor and change/uncomment this line:
 ```
