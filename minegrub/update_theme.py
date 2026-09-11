@@ -3,6 +3,7 @@
 
 import os
 import random
+import re
 import shutil
 import subprocess
 import sys
@@ -130,6 +131,40 @@ def get_args() -> (str, str):
         print(f"WARNING: expected at most 2 arguments, but got {len(sys.argv)}.", file=sys.stderr)
         return sys.argv[1], sys.argv[2]
 
+def button_style_for_background(background_file: str) -> str:
+    VERSIONED_BACKGROUND = re.compile(r"^(\d+)\.(\d+)(?:\.\d+)?(?:\s|-|$)")
+    version_match = VERSIONED_BACKGROUND.match(Path(background_file).stem)
+    if version_match:
+        # Choose the button style from a version-prefixed background filename
+        major, minor = (int(part) for part in version_match.group(1, 2))
+        if (major, minor) >= (1, 15):
+            return "modern"
+    return "classic"
+
+def update_button_style(background_file: str) -> None:
+    style = button_style_for_background(background_file)
+    button_options_dir = Path(themedir) / "button_options"
+    if not button_options_dir.is_dir():
+        button_options_dir = Path(themedir).parent / "button_options"
+    style_dir = button_options_dir / style
+    source_files = sorted(style_dir.glob("selected_item_*.png"))
+    if len(source_files) != 9:
+        raise FileNotFoundError(f"Expected 9 button textures in {style_dir}")
+    for source_file in source_files:
+        shutil.copyfile(source_file, Path(themedir) / source_file.name)
+
+    colors = ("#ffffff", "#383838") if style == "modern" else ("#ffffa0", "#3f3f28")
+    theme_file = Path(themedir) / "theme.txt"
+    color_lines = [
+        i for i, line in enumerate(theme_file.read_text().splitlines())
+        if line.strip().startswith("selected_item_color")
+    ]
+    if len(color_lines) != 2:
+        raise ValueError(f"Expected 2 selected item colors in {theme_file}")
+    for linenum, color in zip(color_lines, colors):
+        patch(theme_file, linenum, f'\tselected_item_color = "{color}"')
+    print(f"Using {style} button style.")
+
 def update_background(background_file = "") -> None:
     if background_file == "":   # no background given, chose randomly
         list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '.'] # ignore hidden files
@@ -141,6 +176,7 @@ def update_background(background_file = "") -> None:
         print(f"ERROR: The file {background_file} does not exist.", file=sys.stderr)
         quit(1)
     shutil.copyfile(background_file, f"{themedir}/background.png")
+    update_button_style(background_file)
     print(f"Using background '{background_file}'.")
 
 if __name__ == "__main__":

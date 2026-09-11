@@ -48,6 +48,7 @@ cd ./minegrub-theme
 - Copy the folder to your boot partition: (for your interest: `-ruv` = recursive, update, verbose)
 ```
 sudo cp -ruv ./minegrub /boot/grub/themes/
+sudo cp -ruv ./button_options /boot/grub/themes/minegrub/
 ```
 - Open `/etc/default/grub` with your text editor and change/uncomment this line:
 ```
@@ -130,6 +131,7 @@ The `update_theme.py` script can make the theme more dynamic: It...
 - Update the amount of packages currently installed.
 - Randomly chooses a file from `backgrounds/` (ignoring hidden files beginning with a dot) as the background image.
   - Put all backgrounds you want to randomly choose from in `./minegrub/backgrounds/`. Hidden files (i.e. filenames beginning with a dot) will be ignored. You can also add your own images.
+  - Version-prefixed backgrounds also select the matching button style automatically: `1.15` and newer use a white outline without changing the white text, while older or non-versioned backgrounds use the classic blue highlight and yellow text.
 - If you want to get a specific splash and/or background for the next boot, run `python update_theme.py [BACKGROUND_FILE [SPLASH]]` (e.g. `python update_theme.py 'backgrounds/1.15 - [Buzzy Bees].png' 'Splashing!'`)
   - Empty string parameters will be replaced by a random choice, e.g. `python update_theme.py '' 'Splashing!'` for a random background and the splash `Splashing!`.
 
