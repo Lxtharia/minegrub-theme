@@ -109,3 +109,4 @@ echo "[YEAH] And optionally this line. This won't have any effect unless you hav
 echo
 echo -e "    GRUB_BACKGROUND=$theme_path/dirt.png"
 echo
+
