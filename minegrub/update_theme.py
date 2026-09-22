@@ -3,6 +3,7 @@
 
 import os
 import random
+import re
 import shutil
 import subprocess
 import sys
@@ -130,6 +131,20 @@ def get_args() -> (str, str):
         print(f"WARNING: expected at most 2 arguments, but got {len(sys.argv)}.", file=sys.stderr)
         return sys.argv[1], sys.argv[2]
 
+def update_button_style(background_file: str) -> None:
+    version = re.match(r"^(\d+)\.(\d+)", Path(background_file).name)
+    style = "modern" if version and tuple(map(int, version.groups())) >= (1, 15) else "classic"
+    options = Path(themedir) / "button_options"
+    if not options.is_dir():
+        options = Path(themedir).parent / "button_options"
+    for source in (options / style).glob("selected_item_*.png"):
+        shutil.copy(source, themedir)
+
+    theme_file = Path(themedir) / "theme.txt"
+    colors = iter(("#ffffff", "#383838") if style == "modern" else ("#ffffa0", "#3f3f28"))
+    theme_file.write_text(re.sub(r'(?<=selected_item_color = ")[^"]+', lambda _: next(colors), theme_file.read_text()))
+    print(f"Using {style} button style.")
+
 def update_background(background_file = "") -> None:
     if background_file == "":   # no background given, chose randomly
         list_background_files = [f for f in os.listdir(f"{themedir}/backgrounds/") if f[0] != '.'] # ignore hidden files
@@ -141,6 +156,7 @@ def update_background(background_file = "") -> None:
         print(f"ERROR: The file {background_file} does not exist.", file=sys.stderr)
         quit(1)
     shutil.copyfile(background_file, f"{themedir}/background.png")
+    update_button_style(background_file)
     print(f"Using background '{background_file}'.")
 
 if __name__ == "__main__":

@@ -39,6 +39,7 @@ if [[ "$copy_theme" =~ y|Y || -z "$copy_theme" ]]; then
     echo "[INFO] => Copying the theme files to boot partition:"
     # copy recursive, update, verbose
     cd "$SCRIPT_DIR" && mkdir -p "$grub_path/themes/minegrub" && cp -ruv ./minegrub "$grub_path/themes/" | awk '$0 !~ /skipped/ { print "\t"$0 }'
+    cp -r "$SCRIPT_DIR/button_options" "$theme_path/"
 else
     echo "[INFO] [Skipping] Copying the theme files to boot partition"
 fi
