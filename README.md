@@ -91,6 +91,10 @@ GRUB_THEME=/boot/grub/themes/minegrub/theme.txt
       splash = "100% Flakes!";
       background = "background_options/1.8  - [Classic Minecraft].png";
       boot-options-count = 4;
+      boot-menu-width = 600;
+      boot-menu-height = 500;
+      # Optional background shown in the GRUB console opened with `c`.
+      console-background = "background_options/dirt.png";
     };
     # ...
   };
@@ -121,6 +125,7 @@ Make sure to set the right resolution for your screen in `/etc/default/grub` lik
 - To move that bar down and fix this, all you need to do is edit [this line](https://github.com/Lxtharia/minegrub-theme/blob/main/minegrub/theme.txt#L71) in the theme.txt: `/boot/grub/themes/minegrub/theme.txt`
   - (You can also edit the file in the cloned repository so you don't overwrite it again when you update the theme at some point (via a `cp -r`))
 - The formula and some precalculated values (for 2,3,4,5... boot options) are in the `theme.txt`, so you should be able to easily change it to the correct value.
+- `boot-menu-width` and `boot-menu-height` control the boot menu dimensions in pixels.
 
 ## Changing splash text, background and the "x Packages Installed" text!
 
