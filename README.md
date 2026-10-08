@@ -107,11 +107,13 @@ Make sure to check the following lines are set in `/etc/defaults/grub`:
 - **Comment out** `GRUB_TERMINAL_OUTPUT="console"` (by placing a `#` in front) because this would disable the graphical terminal.
   - You could also add `GRUB_TERMINAL_OUTPUT="gfxterm"` to overwrite a possible default value.
 
-## The font is too small
-Secure boot prevents grub from loading the fonts correctly, so the only solution for this I know is to disable secure boot in your BIOS. 
 
 ## The theme is stretched / buttons are too small / too big
 Make sure to set the right resolution for your screen in `/etc/default/grub` like `GRUB_GFXMODE=2560x1440,1920x1080,auto`. You can see which resolutions your PC supports while pressing `c` while in the real grub menu and running the `videoinfo` command.
+
+## The font is wrong / too small
+Secure boot prevents grub from loading the Minecraft-fonts so it falls back on the grub default font.
+The easiest solution is to disable secure boot in your BIOS. For the more adventurous, a successful attempt to get both working was documented [in this issue](https://github.com/Lxtharia/double-minegrub-menu/issues/20#issuecomment-6017583368).
 
 # Configuration
 
