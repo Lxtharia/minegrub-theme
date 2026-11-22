@@ -17,6 +17,10 @@ service-install:
     sudo cp -uv minegrub-update.service /etc/systemd/system/
     sudo systemctl enable minegrub-update.service
 
-# Remove the installed theme (then drop GRUB_THEME and regenerate grub.cfg)
+# Remove the installed theme, comment out GRUB_THEME and regenerate grub.cfg
 uninstall:
+    #!/usr/bin/env bash
+    set -eu
     sudo rm -rf {{grub}}/themes/minegrub
+    sudo sed -i 's/^GRUB_THEME=/#GRUB_THEME=/' /etc/default/grub
+    if [ -d /boot/grub ]; then sudo grub-mkconfig -o /boot/grub/grub.cfg; else sudo grub2-mkconfig -o /boot/grub2/grub.cfg; fi
