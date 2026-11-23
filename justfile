@@ -8,6 +8,11 @@ install:
     sudo ./install_theme.sh --yes
     sudo sh -c 'if [ -d /boot/grub ]; then grub-mkconfig -o /boot/grub/grub.cfg; else grub2-mkconfig -o /boot/grub2/grub.cfg; fi'
 
+# Install the theme with all patches applied
+full-install:
+    sudo ./install_theme.sh --yes --service --patch-background
+    sudo sh -c 'if [ -d /boot/grub ]; then grub-mkconfig -o /boot/grub/grub.cfg; else grub2-mkconfig -o /boot/grub2/grub.cfg; fi'
+
 # Update splash text, background and package count
 update:
     sudo python3 {{grub}}/themes/minegrub/update_theme.py

@@ -8,12 +8,12 @@ fi
 
 # Options: -y/--yes answers every prompt with its default (copy the theme, nothing else)
 #          --service installs the init service, --patch patches 00_header for GRUB_BACKGROUND
-YES=false; FORCE_SERVICE=false; FORCE_PATCH=false
+YES=false; FORCE_SERVICE=false; FORCE_BG=false
 for arg in "$@"; do
     case "$arg" in
         -y|--yes) YES=true ;;
         --service) FORCE_SERVICE=true ;;
-        --patch) FORCE_PATCH=true ;;
+        --patch-background) FORCE_BG=true ;;
         *) echo "Usage: $0 [-y|--yes] [--service] [--patch]"; exit 1 ;;
     esac
 done
@@ -105,7 +105,7 @@ case "$INIT_SYS" in
 esac
 
 echo
-if ask "[?] Do you want a grub drop-in-config file to be edited so setting GRUB_BACKGROUND will set a background for the grub console? [y/N] " n $FORCE_PATCH; then
+if ask "[?] Do you want a grub drop-in-config file to be edited so setting GRUB_BACKGROUND will set a background for the grub console? [y/N] " n $FORCE_BG; then
     echo "[INFO] Editing /etc/grub.d/00_header"
     # Backing up that file, just in case
     cp --no-clobber /etc/grub.d/00_header ./00_header.bak
