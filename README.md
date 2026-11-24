@@ -26,6 +26,14 @@ sudo ./install_theme.sh
 ```
 - This will help you install the theme, the systemd service and enable the console background (see below)
 - It also lets you choose a background if you don't want to randomize it
+- To skip the prompts, use the flags:
+    - `-y`, `--yes`: answer every prompt with its default (copies the theme, nothing else)
+    - `--service`: install the systemd/OpenRC update service
+    - `--patch`: patch `/etc/grub.d/00_header` so `GRUB_BACKGROUND` works for the console
+    ```
+    sudo ./install_theme.sh --yes --service
+    ```
+- With [just](https://github.com/casey/just) installed, `just install` installs the theme non-interactively and regenerates `grub.cfg`. `just uninstall` removes it again.
 
 ## Manually
 
